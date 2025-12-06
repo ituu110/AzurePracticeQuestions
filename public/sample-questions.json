@@ -1,702 +1,705 @@
-[
-  {
-    "id": 1,
-    "text": "あなたの会社は、オンプレミスのデータセンターからAzureへの移行を計画しています。初期費用（CapEx）を最小限に抑え、使用したリソースに対してのみ料金を支払うモデルを採用したいと考えています。どのクラウドモデルを選択すべきですか？",
-    "options": [
-      "パブリッククラウド",
-      "プライベートクラウド",
-      "ハイブリッドクラウド",
-      "専用ホスティング"
-    ],
-    "correctAnswers": [
-      0
-    ],
-    "explanation": "【正解】パブリッククラウド\nパブリッククラウドは、ハードウェアやインフラストラクチャを購入する必要がなく、従量課金制（OpEx）で利用できるため、初期費用を最小限に抑えることができます。\n\n【不正解の選択肢】\n・プライベートクラウド: 自社専用の環境を構築するため、ハードウェアの購入や維持管理が必要となり、通常は初期費用が高くなります。\n・ハイブリッドクラウド: パブリックとプライベートの両方を組み合わせるため、プライベート部分のコストが発生し、初期費用ゼロではありません。\n・専用ホスティング: 物理サーバーを専有するため、通常は固定費や初期設定費用がかかります。"
-  },
-  {
-    "id": 2,
-    "text": "Azureのサービスにおいて、仮想マシン（VM）の管理責任範囲として正しいものはどれですか？（IaaSの責任共有モデル）",
-    "options": [
-      "OSのパッチ適用はMicrosoftの責任である",
-      "物理ホストのメンテナンスはユーザーの責任である",
-      "インストールするアプリケーションの管理はユーザーの責任である",
-      "データセンターの物理セキュリティはユーザーの責任である"
-    ],
-    "correctAnswers": [
-      2
-    ],
-    "explanation": "【正解】インストールするアプリケーションの管理はユーザーの責任である\nIaaS（Infrastructure as a Service）では、OSより上のレイヤー（ミドルウェア、ランタイム、データ、アプリケーション）はユーザーが管理責任を負います。\n\n【不正解の選択肢】\n・OSのパッチ適用: IaaSではユーザーがOSの管理権限を持つため、OSの更新やパッチ適用もユーザーの責任です（PaaSの場合はMicrosoftの責任）。\n・物理ホストのメンテナンス: 物理的なサーバーやネットワーク機器の管理はクラウドプロバイダー（Microsoft）の責任です。\n・データセンターの物理セキュリティ: 建物の警備や入退室管理などはMicrosoftの責任です。"
-  },
-  {
-    "id": 3,
-    "text": "世界中の複数のリージョンにデータを複製し、1つのリージョンが完全に停止してもデータへのアクセスを維持できるストレージ冗長オプションはどれですか？",
-    "options": [
-      "ローカル冗長ストレージ (LRS)",
-      "ゾーン冗長ストレージ (ZRS)",
-      "地理冗長ストレージ (GRS)",
-      "読み取りアクセス地理冗長ストレージ (RA-GRS)"
-    ],
-    "correctAnswers": [
-      2
-    ],
-    "explanation": "【正解】地理冗長ストレージ (GRS)\nGRSは、プライマリリージョンのデータを数百マイル離れたセカンダリリージョンに非同期で複製します。リージョン全体の障害が発生した場合でもデータを回復できます。\n\n【不正解の選択肢】\n・ローカル冗長ストレージ (LRS): 同一データセンター内で3回複製されますが、データセンター全体の障害には対応できません。\n・ゾーン冗長ストレージ (ZRS): 同一リージョン内の異なる可用性ゾーン（Availability Zone）に複製されますが、リージョン全体の障害には対応できません。\n・読み取りアクセス地理冗長ストレージ (RA-GRS): GRSと同様の冗長性を持ちますが、「読み取りアクセス」が可能になる点が特徴です。設問の要件（リージョン停止時のデータ維持）としてはGRSが基本解ですが、選択肢にGRSがある場合はGRSが最も直接的な答えとなります。"
-  },
-  {
-    "id": 4,
-    "text": "Azureのリソースグループに関する説明として正しいものはどれですか？",
-    "options": [
-      "リソースグループは入れ子（ネスト）にすることができる",
-      "1つのリソースは複数のリソースグループに所属できる",
-      "リソースグループを削除すると、その中のリソースもすべて削除される",
-      "リソースグループとリソースは同じリージョンにある必要がある"
-    ],
-    "correctAnswers": [
-      2
-    ],
-    "explanation": "【正解】リソースグループを削除すると、その中のリソースもすべて削除される\nリソースグループはライフサイクル境界として機能します。グループを削除すると、含まれるすべてのリソースが削除されます。\n\n【不正解の選択肢】\n・リソースグループは入れ子にできる: リソースグループを階層化（リソースグループの中にリソースグループ）することはできません。\n・1つのリソースは複数のリソースグループに所属できる: リソースは必ず1つのリソースグループにのみ所属します。\n・リソースグループとリソースは同じリージョンにある必要がある: リソースグループのメタデータが保存されるリージョンと、その中のリソース（VMなど）のリージョンは異なっていても構いません。"
-  },
-  {
-    "id": 5,
-    "text": "SLA（Service Level Agreement）において「99.99%」の稼働率が保証されている場合、年間の許容ダウンタイムはおよそどれくらいですか？",
-    "options": [
-      "約5分",
-      "約52分",
-      "約8時間",
-      "約3日"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】約52分\n99.99%（フォー・ナイン）の稼働率は、年間で約52.56分のダウンタイムを許容します。\n計算式: 365日 × 24時間 × 60分 × (1 - 0.9999) = 525,600分 × 0.0001 = 52.56分\n\n【不正解の選択肢】\n・約5分: 99.999%（ファイブ・ナイン）の場合です。\n・約8時間: 99.9%（スリー・ナイン）の場合、年間約8.76時間のダウンタイムとなります。\n・約3日: 99%（ツー・ナイン）の場合、年間約3.65日のダウンタイムとなります。"
-  },
-  {
-    "id": 6,
-    "text": "Azure Active Directory (Microsoft Entra ID) の機能で、ユーザーが通常の場所とは異なる場所やデバイスからサインインしようとした場合に、多要素認証（MFA）を要求するような動的なアクセス制御を行う機能は何ですか？",
-    "options": [
-      "Azure RBAC",
-      "条件付きアクセス (Conditional Access)",
-      "Azure Policy",
-      "Privileged Identity Management (PIM)"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】条件付きアクセス (Conditional Access)\n条件付きアクセスは、「If（もし～なら）」と「Then（～する）」のシグナルを使用して、アクセスを許可、ブロック、またはMFAを要求するかを動的に決定します。\n\n【不正解の選択肢】\n・Azure RBAC: リソースに対する「誰が何をできるか」という権限管理を行いますが、サインイン時の状況（場所やリスク）に応じた動的な制御ではありません。\n・Azure Policy: リソースの構成ルール（例：特定のリージョン以外への作成禁止）を強制するものですが、ユーザー認証の制御ではありません。\n・Privileged Identity Management (PIM): 特権ロール（管理者権限）を一時的に付与・管理するための機能です。"
-  },
-  {
-    "id": 7,
-    "text": "Azureの仮想ネットワーク（VNet）間でプライベートIPアドレスを使用して通信を行いたい場合、何を設定する必要がありますか？",
-    "options": [
-      "VNet ピアリング",
-      "VPN Gateway",
-      "ExpressRoute",
-      "Azure DNS"
-    ],
-    "correctAnswers": [
-      0
-    ],
-    "explanation": "【正解】VNet ピアリング\nVNetピアリングを使用すると、2つの仮想ネットワークを接続し、あたかも1つのネットワークであるかのようにプライベートIPで通信できます。インターネットを経由せず、Microsoftのバックボーンネットワークを利用します。\n\n【不正解の選択肢】\n・VPN Gateway: VNet間の接続も可能ですが、暗号化されたトンネルを使用するため、ピアリングに比べて帯域幅の制限やレイテンシが発生する可能性があります。主にオンプレミスとの接続に使用されます。\n・ExpressRoute: オンプレミスネットワークとAzureを専用線で接続するサービスです。\n・Azure DNS: ドメイン名の名前解決を提供するサービスであり、ネットワーク接続機能ではありません。"
-  },
-  {
-    "id": 8,
-    "text": "アプリケーションのコードを変更することなく、SQLデータベースの接続文字列やAPIキーなどの機密情報を安全に管理・保存するためのサービスはどれですか？",
-    "options": [
-      "Azure Storage Account",
-      "Azure Key Vault",
-      "Azure Sentinel",
-      "Azure Information Protection"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】Azure Key Vault\nAzure Key Vaultは、シークレット（接続文字列、パスワード）、キー（暗号化キー）、証明書を一元的に安全に管理するためのサービスです。\n\n【不正解の選択肢】\n・Azure Storage Account: データを保存できますが、機密情報の管理に特化した機能（アクセス制御、監査、ローテーションなど）はKey Vaultが優れています。\n・Azure Sentinel: SIEM（セキュリティ情報イベント管理）およびSOARソリューションであり、脅威の検出と対応に使用されます。\n・Azure Information Protection: ドキュメントやメールの分類、ラベル付け、保護を行うサービスです。"
-  },
-  {
-    "id": 9,
-    "text": "Azureのコストを見積もる際、将来の構成を入力して概算費用を算出するために使用するツールはどれですか？",
-    "options": [
-      "Azure Cost Management",
-      "料金計算ツール (Pricing Calculator)",
-      "TCO 計算ツール (Total Cost of Ownership Calculator)",
-      "Azure Advisor"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】料金計算ツール (Pricing Calculator)\n特定のリソース構成（例：VMのサイズ、ストレージ容量、リージョン）を選択し、その構成での月額見積もりを算出するためのツールです。\n\n【不正解の選択肢】\n・Azure Cost Management: 実際に発生したコストの監視、分析、予算設定を行うためのツールです。\n・TCO 計算ツール: オンプレミス環境とAzure環境のコストを比較し、移行によるコスト削減効果を試算するためのツールです。\n・Azure Advisor: 既存のリソース構成を分析し、コスト削減、セキュリティ、パフォーマンス向上のための推奨事項を提供するサービスです。"
-  },
-  {
-    "id": 10,
-    "text": "サーバーレスコンピューティングの特徴として適切でないものはどれですか？",
-    "options": [
-      "インフラストラクチャの管理が不要",
-      "使用した実行時間やリソース量に応じて課金される",
-      "自動的にスケーリングされる",
-      "OSへのフルアクセス権限がある"
-    ],
-    "correctAnswers": [
-      3
-    ],
-    "explanation": "【正解】OSへのフルアクセス権限がある\nサーバーレス（Azure Functionsなど）では、基盤となるOSやハードウェアは完全に抽象化されており、ユーザーはOSにアクセスしたり管理したりすることはできません。\n\n【不正解の選択肢（これらはサーバーレスの特徴です）】\n・インフラストラクチャの管理が不要: サーバーのプロビジョニングやパッチ適用はプラットフォームが行います。\n・使用した実行時間やリソース量に応じて課金される: 待機時間は課金されず、コードが実行された分だけ支払います。\n・自動的にスケーリングされる: リクエスト数に応じて自動的にインスタンスが増減します。"
-  },
-  {
-    "id": 11,
-    "text": "Azure App Serviceのプランにおいて、運用環境で使用するための「デプロイスロット（ステージング環境）」機能が利用可能になる最小のティア（価格レベル）はどれですか？",
-    "options": [
-      "Free",
-      "Shared",
-      "Basic",
-      "Standard"
-    ],
-    "correctAnswers": [
-      3
-    ],
-    "explanation": "【正解】Standard\nデプロイスロット機能は、Standardティア以上で利用可能です。これにより、ダウンタイムなしで本番環境へのスワップが可能になります。\n\n【不正解の選択肢】\n・Free / Shared: 開発・テスト向けの共有インフラプランで、デプロイスロットやカスタムドメイン（Freeは不可）などの機能に制限があります。\n・Basic: 専用インスタンスですが、デプロイスロット機能は含まれていません。"
-  },
-  {
-    "id": 12,
-    "text": "Azure Monitorの一部で、リソースのデプロイ、変更、削除などの操作履歴（「いつ」「誰が」「何を」したか）を確認できるログはどれですか？",
-    "options": [
-      "メトリック",
-      "アクティビティログ",
-      "診断ログ（リソースログ）",
-      "Application Insights"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】アクティビティログ\nアクティビティログは、サブスクリプションレベルのイベント（リソースの作成、更新、削除など）を記録するログです。監査目的に使用されます。\n\n【不正解の選択肢】\n・メトリック: リソースのパフォーマンス（CPU使用率、メモリなど）を数値データとして一定間隔で収集するものです。\n・診断ログ（リソースログ）: リソース内部の操作に関する詳細なログ（例：SQL Serverへのクエリ実行履歴など）です。\n・Application Insights: アプリケーションのパフォーマンス管理（APM）機能で、アプリ内の例外やリクエスト応答時間などを監視します。"
-  },
-  {
-    "id": 13,
-    "text": "複数のVMに対して負荷分散を行い、着信トラフィックを分散させるレイヤー4（トランスポート層）のロードバランサーはどれですか？",
-    "options": [
-      "Azure Application Gateway",
-      "Azure Load Balancer",
-      "Azure Front Door",
-      "Azure Traffic Manager"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】Azure Load Balancer\nAzure Load Balancerは、TCP/UDPプロトコルに基づき、レイヤー4でトラフィックを分散させます。\n\n【不正解の選択肢】\n・Azure Application Gateway: レイヤー7（HTTP/HTTPS）のロードバランサーで、Webアプリケーションファイアウォール（WAF）機能などを持ちます。\n・Azure Front Door: グローバルなレイヤー7ロードバランサーで、CDN機能などを統合しています。\n・Azure Traffic Manager: DNSベースのトラフィックルーティングサービスで、実際にトラフィックを中継するわけではありません。"
-  },
-  {
-    "id": 14,
-    "text": "IoTデバイスから毎秒数百万件のイベントデータを受信し、リアルタイム分析のために他のサービスへデータをストリーミングするのに最適なサービスはどれですか？",
-    "options": [
-      "Azure IoT Hub",
-      "Azure Event Hubs",
-      "Azure Notification Hubs",
-      "Azure Service Bus"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】Azure Event Hubs\nEvent Hubsは、ビッグデータストリーミングプラットフォームであり、毎秒数百万のイベントを取り込むことができます。\n\n【不正解の選択肢】\n・Azure IoT Hub: IoTデバイスとの双方向通信（デバイス管理やコマンド送信）に特化しています。データ受信も可能ですが、純粋な大量イベントストリーミングとしてはEvent Hubsが特化しています（ただし、IoT Hubも内部でEvent Hubs互換エンドポイントを持ちます。設問が「デバイス管理」を含まない場合、Event Hubsがより一般的です）。\n・Azure Notification Hubs: モバイルデバイスなどへのプッシュ通知を送信するためのサービスです。\n・Azure Service Bus: エンタープライズメッセージング（キューやトピック）に使用され、順序保証やトランザクション処理が重要ですが、大量ストリーミングにはEvent Hubsが適しています。"
-  },
-  {
-    "id": 15,
-    "text": "Azureのガバナンスにおいて、特定のリソースタイプ（例：GシリーズのVM）の作成を禁止したり、すべてのリソースに特定のタグを強制したりするために使用するサービスはどれですか？",
-    "options": [
-      "Azure RBAC",
-      "Azure Policy",
-      "Azure Blueprints",
-      "Azure Monitor"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】Azure Policy\nAzure Policyは、リソースが組織の基準やコンプライアンス要件に準拠しているかを評価し、違反するリソースの作成を拒否したり、設定を強制したりします。\n\n【不正解の選択肢】\n・Azure RBAC: ユーザーの操作権限（作成できる、削除できるなど）を制御しますが、リソースのプロパティ（VMのサイズやタグの有無）に基づく細かい制限は行いません。\n・Azure Blueprints: RBAC、ポリシー、ARMテンプレートなどをひとまとめにして環境定義を作成するものですが、ルールの定義自体はPolicyが行います。\n・Azure Monitor: 監視サービスです。"
-  },
-  {
-    "id": 16,
-    "text": "データサイエンティストが機械学習モデルを構築・トレーニングするためのコラボレーション環境を提供するサービスはどれですか？",
-    "options": [
-      "Azure Cognitive Services",
-      "Azure Machine Learning",
-      "Azure Bot Service",
-      "Azure Databricks"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】Azure Machine Learning\nAzure Machine Learningは、モデルの構築、トレーニング、デプロイ、管理を行うための統合プラットフォームです。Jupyter Notebookなどが利用可能です。\n\n【不正解の選択肢】\n・Azure Cognitive Services: 視覚、音声、言語などの学習済みAIモデルをAPIとして提供するサービスです（モデルを自作するのではなく利用する）。\n・Azure Bot Service: チャットボットを開発・管理するためのサービスです。\n・Azure Databricks: Apache Sparkベースの分析プラットフォームで機械学習も可能ですが、設問の「機械学習モデルのライフサイクル管理」としてはAzure Machine Learningが主要な正解です。"
-  },
-  {
-    "id": 17,
-    "text": "Azure SQL Databaseにおいて、データベースのパフォーマンスを自動的にチューニング（インデックスの作成・削除など）する機能は何ですか？",
-    "options": [
-      "Elastic Pool",
-      "自動チューニング",
-      "ジオレプリケーション",
-      "Advanced Data Security"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】自動チューニング\nAzure SQL Databaseの自動チューニング機能は、ワークロードを分析し、パフォーマンスを向上させるためにインデックスの作成や削除、クエリプランの修正を自動的に行います。\n\n【不正解の選択肢】\n・Elastic Pool: 複数のデータベース間でリソース（DTUやvCore）を共有し、コスト効率を高める機能です。\n・ジオレプリケーション: データベースのセカンダリレプリカを別のリージョンに作成する機能です。\n・Advanced Data Security: 脆弱性評価や脅威検出を提供するセキュリティ機能群です。"
-  },
-  {
-    "id": 18,
-    "text": "オンプレミスのActive DirectoryとAzure Active Directoryを同期し、ユーザーが同じパスワードで両方の環境にサインインできるようにするためのツールはどれですか？",
-    "options": [
-      "Azure AD Connect",
-      "Azure AD Domain Services",
-      "Azure AD B2C",
-      "Azure AD Application Proxy"
-    ],
-    "correctAnswers": [
-      0
-    ],
-    "explanation": "【正解】Azure AD Connect\nAzure AD Connectは、オンプレミスのIDインフラストラクチャをMicrosoft Entra ID（旧Azure AD）と統合するためのツールです。パスワードハッシュ同期などを行います。\n\n【不正解の選択肢】\n・Azure AD Domain Services: Azure上でマネージドなドメインコントローラー機能（LDAP, Kerberosなど）を提供するサービスです。\n・Azure AD B2C: 顧客向けのID管理サービス（FacebookやGoogleアカウントでのログインなど）です。\n・Azure AD Application Proxy: オンプレミスのWebアプリに外部から安全にアクセスするための機能です。"
-  },
-  {
-    "id": 19,
-    "text": "Azure Marketplaceから提供されるサードパーティ製のネットワーク仮想アプライアンス（ファイアウォールなど）へのトラフィックをルーティングするために、ユーザー定義ルート（UDR）を作成する場合、ネクストホップの種類は何に設定しますか？",
-    "options": [
-      "Virtual Network",
-      "Internet",
-      "Virtual Appliance",
-      "Virtual Network Gateway"
-    ],
-    "correctAnswers": [
-      2
-    ],
-    "explanation": "【正解】Virtual Appliance\n特定のVM（ファイアウォールやルーターとして機能するNVA）へトラフィックを転送する場合、ネクストホップの種類として「Virtual Appliance（仮想アプライアンス）」を選択し、そのVMのプライベートIPアドレスを指定します。\n\n【不正解の選択肢】\n・Virtual Network: VNet内の通信に使用されます（デフォルト）。\n・Internet: インターネットへの直接通信に使用されます。\n・Virtual Network Gateway: VPNゲートウェイに向けた通信に使用されます。"
-  },
-  {
-    "id": 20,
-    "text": "コンテナ化されたアプリケーションをオーケストレーション（管理、スケーリング、デプロイ）するための業界標準のプラットフォームを提供するAzureサービスはどれですか？",
-    "options": [
-      "Azure Container Instances (ACI)",
-      "Azure Kubernetes Service (AKS)",
-      "Azure App Service for Containers",
-      "Azure Container Registry"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】Azure Kubernetes Service (AKS)\nAKSは、マネージドなKubernetes環境を提供し、大規模なコンテナオーケストレーションを簡素化します。\n\n【不正解の選択肢】\n・Azure Container Instances (ACI): サーバーレスでコンテナを単発実行するのに適していますが、オーケストレーション機能（複数コンテナの連携管理）は限定的です。\n・Azure App Service for Containers: Webアプリとしてコンテナを実行するのに適していますが、Kubernetesのような複雑なオーケストレーションではありません。\n・Azure Container Registry: コンテナイメージ（Dockerイメージ）を保存するためのプライベートレジストリです。"
-  },
-  {
-    "id": 21,
-    "text": "複数のサブスクリプションを階層的にグループ化し、ポリシーやアクセス制御を一括適用して管理するための論理コンテナはどれですか？",
-    "options": [
-      "リソースグループ",
-      "管理グループ (Management Groups)",
-      "Azure Active Directory テナント",
-      "リージョン"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】管理グループ (Management Groups)\n管理グループを使用すると、複数のサブスクリプションをグループ化し、ガバナンス（ポリシーやRBAC）を階層的に適用できます。ルート管理グループの下に最大6階層まで作成可能です。\n\n【不正解の選択肢】\n・リソースグループ: リソースをまとめる単位ですが、サブスクリプションの下位に位置します。\n・Azure Active Directory テナント: ID管理の境界ですが、リソースの階層管理とは異なります。\n・リージョン: 地理的な場所の単位です。"
-  },
-  {
-    "id": 22,
-    "text": "Azureのサービスが計画メンテナンスや障害によって影響を受けているかどうか、パーソナライズされたダッシュボードで確認できるサービスはどれですか？",
-    "options": [
-      "Azure Status",
-      "Azure Service Health",
-      "Azure Monitor",
-      "Azure Security Center"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】Azure Service Health\nAzure Service Healthは、自分が利用しているリソースやリージョンに影響を与える障害、計画メンテナンス、正常性に関する通知を提供します。\n\n【不正解の選択肢】\n・Azure Status: 全世界のAzureサービスの稼働状況を示す公開ページですが、個々のユーザーのリソースに特化した情報は提供しません。\n・Azure Monitor: リソースのパフォーマンス監視を行いますが、Azure基盤側の障害情報はService Healthが担当です。\n・Azure Security Center: セキュリティポスチャ管理を提供します。"
-  },
-  {
-    "id": 23,
-    "text": "SQL ServerのデータベースをAzureに移行したいが、OSレベルのアクセスやSQL Serverエージェントなどの機能が必要な場合、どのデプロイオプションが最適ですか？",
-    "options": [
-      "Azure SQL Database",
-      "Azure SQL Managed Instance",
-      "SQL Server on Azure Virtual Machines",
-      "Azure Cosmos DB"
-    ],
-    "correctAnswers": [
-      2
-    ],
-    "explanation": "【正解】SQL Server on Azure Virtual Machines\nVM上にSQL Serverをインストールするため、OSへのフルアクセスが可能であり、オンプレミスとほぼ同じ環境を再現できます。\n\n【不正解の選択肢】\n・Azure SQL Managed Instance: SQL Serverとの高い互換性（SQL Agentなど）を持ちますが、OSへのアクセスはできません（PaaS）。\n・Azure SQL Database: フルマネージドのPaaSであり、OSアクセスや一部のSQL Server機能（クロスデータベースクエリなど）に制限があります。\n・Azure Cosmos DB: NoSQLデータベースであり、SQL Serverとは異なります。"
-  },
-  {
-    "id": 24,
-    "text": "Azure Blob Storageにおいて、アクセス頻度が低く、読み取り待ち時間が数時間かかっても問題ないアーカイブデータの保存に最適なアクセス層はどれですか？",
-    "options": [
-      "Hot (ホット)",
-      "Cool (クール)",
-      "Archive (アーカイブ)",
-      "Premium (プレミアム)"
-    ],
-    "correctAnswers": [
-      2
-    ],
-    "explanation": "【正解】Archive (アーカイブ)\nアーカイブ層は、ストレージコストが最も安いですが、データを取り出す（リハイドレート）のに数時間かかります。長期保存に適しています。\n\n【不正解の選択肢】\n・Hot (ホット): 頻繁にアクセスされるデータ向け。ストレージコストは高いがアクセスは安価。\n・Cool (クール): 少なくとも30日間保存される、アクセス頻度の低いデータ向け。即時アクセス可能です。\n・Premium (プレミアム): 高いパフォーマンスが必要なワークロード向け（SSDベース）。"
-  },
-  {
-    "id": 25,
-    "text": "DevOpsの実践において、コードの変更を自動的にビルド、テスト、デプロイするためのパイプラインを提供するサービスはどれですか？",
-    "options": [
-      "Azure Repos",
-      "Azure Boards",
-      "Azure Pipelines",
-      "Azure Artifacts"
-    ],
-    "correctAnswers": [
-      2
-    ],
-    "explanation": "【正解】Azure Pipelines\nAzure Pipelinesは、CI/CD（継続的インテグレーション/継続的デリバリー）を実現するためのサービスで、あらゆる言語やプラットフォームのビルド・テスト・デプロイを自動化します。\n\n【不正解の選択肢】\n・Azure Repos: Gitリポジトリのホスティングサービスです。\n・Azure Boards: タスク管理、カンバンボード、バグ追跡などのプロジェクト管理機能です。\n・Azure Artifacts: パッケージ（Maven, npm, NuGetなど）の管理機能です。"
-  },
-  {
-    "id": 26,
-    "text": "AzureのWebアプリケーションファイアウォール（WAF）は、主にどのような攻撃からアプリケーションを保護しますか？",
-    "options": [
-      "DDoS攻撃（ボリューム攻撃）",
-      "SQLインジェクションやクロスサイトスクリプティング（XSS）",
-      "RDP総当たり攻撃",
-      "フィッシングメール"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】SQLインジェクションやクロスサイトスクリプティング（XSS）\nWAFは、OSI参照モデルのレイヤー7（アプリケーション層）で動作し、OWASP Top 10に含まれるような一般的なWeb脆弱性攻撃を検知・ブロックします。\n\n【不正解の選択肢】\n・DDoS攻撃: 基本的なDDoS保護はAzure DDoS Protectionが提供します。\n・RDP総当たり攻撃: これは管理ポートへの攻撃であり、NSGやJIT VMアクセスなどで防ぎます。\n・フィッシングメール: これはメールセキュリティの領域であり、Microsoft Defender for Office 365などが対応します。"
-  },
-  {
-    "id": 27,
-    "text": "組織が独自のコンプライアンス要件（例：データ主権のために特定の国にのみデータを保存する）を満たすために利用できる、Microsoftが提供するドキュメントや情報のポータルサイトは何ですか？",
-    "options": [
-      "Microsoft Privacy Statement",
-      "Service Trust Portal",
-      "Azure Compliance Manager",
-      "Azure Knowledge Center"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】Service Trust Portal\nService Trust Portalは、監査レポート、コンプライアンスガイド、セキュリティ評価など、Microsoftのクラウドサービスがどのようにデータを保護し、規制に準拠しているかを示す資料を公開しているサイトです。\n\n【不正解の選択肢】\n・Microsoft Privacy Statement: プライバシーに関する声明文です。\n・Azure Compliance Manager: これはMicrosoft Purviewの一部として、自社のコンプライアンススコアを管理するツールですが、公開情報のポータルという意味ではService Trust Portalが適切です。\n・Azure Knowledge Center: 一般的な質問への回答集です。"
-  },
-  {
-    "id": 28,
-    "text": "インフラストラクチャをコードとして管理（IaC）するために使用される、AzureネイティブのJSON形式のテンプレートは何ですか？",
-    "options": [
-      "Terraform",
-      "Ansible Playbook",
-      "Azure Resource Manager (ARM) テンプレート",
-      "PowerShell DSC"
-    ],
-    "correctAnswers": [
-      2
-    ],
-    "explanation": "【正解】Azure Resource Manager (ARM) テンプレート\nARMテンプレートは、Azureのリソース定義をJSON形式で記述し、宣言的にデプロイするための仕組みです。\n\n【不正解の選択肢】\n・Terraform: HashiCorp社製のIaCツールで、HCL言語を使用します（Azureでもよく使われますが、AzureネイティブのJSON形式ではありません）。\n・Ansible Playbook: 構成管理ツールで、YAML形式を使用します。\n・PowerShell DSC: サーバーの構成をコードで管理するものですが、リソースのプロビジョニング（作成）の主役はARMテンプレートです。"
-  },
-  {
-    "id": 29,
-    "text": "Azure Functionsの「消費プラン（Consumption Plan）」における課金モデルはどのようなものですか？",
-    "options": [
-      "事前に予約したインスタンス数に基づいて月額固定料金を支払う",
-      "関数の実行回数と実行時間（GB秒）に基づいて支払う",
-      "常時稼働しているサーバーのCPU使用率に基づいて支払う",
-      "データの保存容量のみに基づいて支払う"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】関数の実行回数と実行時間（GB秒）に基づいて支払う\n消費プランはサーバーレスモデルであり、関数が実行されている間のみリソースが割り当てられ、そのリソース消費量（メモリ×時間）と実行回数に対して課金されます。\n\n【不正解の選択肢】\n・事前に予約したインスタンス数...: これはApp Service Plan（Dedicated）のモデルです。\n・常時稼働しているサーバー...: これもApp Service Planの特徴です。\n・データの保存容量のみ...: これはStorage Accountなどの特徴です。"
-  },
-  {
-    "id": 30,
-    "text": "Azureサブスクリプション内のリソースにタグを付ける主な目的として、適切でないものはどれですか？",
-    "options": [
-      "コスト管理（部門ごとの課金振り分けなど）",
-      "リソースの整理と検索",
-      "リソースへのアクセス制御権限の付与",
-      "運用管理の効率化（環境や所有者の明示）"
-    ],
-    "correctAnswers": [
-      2
-    ],
-    "explanation": "【正解】リソースへのアクセス制御権限の付与\nタグ自体にはアクセス制御機能はありません。アクセス制御はRBAC（ロールベースアクセス制御）で行います。（※ただし、条件付きアクセスなどでタグを条件にすることは高度な設定でありえますが、タグの「主な目的」ではありません）\n\n【不正解の選択肢（これらはタグの目的です）】\n・コスト管理: Cost Managementでタグごとにコストを集計できます。\n・リソースの整理: 特定のプロジェクトや環境でリソースをフィルタリングできます。\n・運用管理: 所有者や環境（Dev/Prod）を明示するのに役立ちます。"
-  },
-  {
-    "id": 31,
-    "text": "Azure Filesを使用すると、どのようなプロトコルを使用してファイル共有にアクセスできますか？",
-    "options": [
-      "SMB (Server Message Block)",
-      "FTP (File Transfer Protocol)",
-      "SSH (Secure Shell)",
-      "RDP (Remote Desktop Protocol)"
-    ],
-    "correctAnswers": [
-      0
-    ],
-    "explanation": "【正解】SMB (Server Message Block)\nAzure Filesは、業界標準のSMBプロトコル（およびNFS）を介してアクセスできるフルマネージドのファイル共有を提供します。Windows、Linux、macOSからマウント可能です。\n\n【不正解の選択肢】\n・FTP: ファイル転送プロトコルですが、Azure Filesの標準アクセス方法ではありません（Blob StorageにはSFTPサポートがあります）。\n・SSH: リモートコマンド実行のためのプロトコルです。\n・RDP: リモートデスクトップ接続のためのプロトコルです。"
-  },
-  {
-    "id": 32,
-    "text": "ビッグデータ解析のために、構造化データ、半構造化データ、非構造化データをそのままの形式で大量に保存できる「Data Lake」機能を持つストレージサービスはどれですか？",
-    "options": [
-      "Azure SQL Database",
-      "Azure Data Lake Storage Gen2",
-      "Azure Queue Storage",
-      "Azure Disk Storage"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】Azure Data Lake Storage Gen2\nADLS Gen2は、Azure Blob Storageをベースに構築されており、階層型名前空間を持ち、ビッグデータ分析用に最適化されています。\n\n【不正解の選択肢】\n・Azure SQL Database: リレーショナル（構造化）データ向けです。\n・Azure Queue Storage: メッセージキューイング向けです。\n・Azure Disk Storage: VMの仮想ディスクとして使用されます。"
-  },
-  {
-    "id": 33,
-    "text": "世界規模で分散されたNoSQLデータベースサービスで、複数の整合性レベル（Strong, Bounded Staleness, Session, etc.）を選択できるのはどれですか？",
-    "options": [
-      "Azure SQL Database",
-      "Azure Cosmos DB",
-      "Azure Database for MySQL",
-      "Azure Synapse Analytics"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】Azure Cosmos DB\nCosmos DBは、グローバル分散型のマルチモデルNoSQLデータベースであり、5つの整合性レベルを選択して、パフォーマンスと整合性のバランスを調整できます。\n\n【不正解の選択肢】\n・Azure SQL Database / MySQL: リレーショナルデータベースです。\n・Azure Synapse Analytics: データウェアハウスおよび分析サービスです。"
-  },
-  {
-    "id": 34,
-    "text": "Azure サポートプランにおいて、24時間365日の技術サポート（メールおよび電話）が含まれる最小のプランはどれですか？",
-    "options": [
-      "Basic",
-      "Developer",
-      "Standard",
-      "Professional Direct"
-    ],
-    "correctAnswers": [
-      2
-    ],
-    "explanation": "【正解】Standard\nStandardプラン以上で、24時間365日の電話およびメールによる技術サポートが提供されます。\n\n【不正解の選択肢】\n・Basic: すべてのAzureアカウントに含まれますが、技術サポートはなく、課金・サブスクリプション管理のサポートのみです。\n・Developer: 営業時間内のメールサポートのみです。\n・Professional Direct: Standardより上位のプランで、より早い応答時間やエスカレーション管理が含まれます。"
-  },
-  {
-    "id": 35,
-    "text": "Azure Marketplaceとは何ですか？",
-    "options": [
-      "Azureのサービス開発者がコードを共有する場所",
-      "Microsoftおよびパートナーが提供するアプリケーションやサービスを検索・購入・デプロイできるオンラインストア",
-      "Azureの未使用リソースをオークション形式で売買する場所",
-      "Azureのトレーニングコースを受講できるポータル"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】Microsoftおよびパートナーが提供するアプリケーションやサービスを検索・購入・デプロイできるオンラインストア\nAzure Marketplaceでは、認定された数千のアプリケーション（サードパーティ製ファイアウォール、CMS、DBなど）を提供しています。\n\n【不正解の選択肢】\n・コード共有: それはGitHubなどです。\n・リソースのオークション: スポットインスタンス（Spot VM）という概念はありますが、Marketplaceの説明ではありません。\n・トレーニング: それはMicrosoft Learnです。"
-  },
-  {
-    "id": 36,
-    "text": "Azureのリソースロック（Resource Lock）の種類として存在するものはどれですか？",
-    "options": [
-      "CanNotDelete（削除不可） と ReadOnly（読み取り専用）",
-      "Private（非公開） と Public（公開）",
-      "Encrypted（暗号化） と Decrypted（復号化）",
-      "High（高） と Low（低）"
-    ],
-    "correctAnswers": [
-      0
-    ],
-    "explanation": "【正解】CanNotDelete（削除不可） と ReadOnly（読み取り専用）\nリソースロックには2種類あります。\n- CanNotDelete: 変更や読み取りは可能だが、削除はできない。\n- ReadOnly: 読み取りのみ可能で、変更も削除もできない。\n\n【不正解の選択肢】\nこれらはリソースロックの種類ではありません。"
-  },
-  {
-    "id": 37,
-    "text": "ID保護機能において、ユーザーが「誰であるか」を確認する要素（知識、所持、生体）を2つ以上組み合わせる認証方式を何と呼びますか？",
-    "options": [
-      "SSO (シングルサインオン)",
-      "MFA (多要素認証)",
-      "RBAC (ロールベースアクセス制御)",
-      "Federation (フェデレーション)"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】MFA (多要素認証)\nMulti-Factor Authenticationは、パスワード（知識）だけでなく、スマホ（所持）や指紋（生体）などを組み合わせてセキュリティを強化します。\n\n【不正解の選択肢】\n・SSO: 1度のログインで複数のサービスを利用できる仕組みです。\n・RBAC: 権限管理の仕組みです。\n・Federation: 異なる組織やドメイン間でID情報を連携する仕組みです。"
-  },
-  {
-    "id": 38,
-    "text": "Azure Governmentはどのような顧客向けに設計されていますか？",
-    "options": [
-      "すべての一般企業",
-      "米国の連邦政府、州政府、地方自治体およびそのパートナー",
-      "欧州連合（EU）の政府機関",
-      "非営利団体（NPO）のみ"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】米国の連邦政府、州政府、地方自治体およびそのパートナー\nAzure Governmentは、物理的に隔離されたデータセンターを使用し、米国政府の厳格なコンプライアンス要件を満たすために提供されている専用リージョンです。\n\n【不正解の選択肢】\n・すべての一般企業: パブリックAzureを使用します。\n・EUの政府機関: 通常のEUリージョンを使用するか、特定の主権クラウド要件がある場合は別の対応となりますが、\"Azure Government\"という製品名は米国向けを指します。\n・非営利団体: Azure for Nonprofitsというプログラムはありますが、専用リージョンではありません。"
-  },
-  {
-    "id": 39,
-    "text": "Azure Cloud Shellの説明として正しいものはどれですか？",
-    "options": [
-      "ローカルPCにインストールして使用するコマンドラインツール",
-      "ブラウザからアクセスできる、認証済みの対話型シェル環境",
-      "GUIベースのリソース管理ツール",
-      "仮想マシンのデスクトップ画面を表示するツール"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】ブラウザからアクセスできる、認証済みの対話型シェル環境\nAzure Portal内から直接起動でき、PowerShellまたはBashを選択してAzureリソースを操作できます。Azure CLIなどのツールがプリインストールされています。\n\n【不正解の選択肢】\n・ローカルPCにインストール...: それはAzure CLIやAzure PowerShellモジュールです。\n・GUIベース...: それはAzure Portalです。\n・デスクトップ画面...: それはBastionやRDPです。"
-  },
-  {
-    "id": 40,
-    "text": "特定のリージョンで自然災害が発生した場合に備えて、少なくとも数百マイル離れた別のリージョンとペアを組む概念を何と呼びますか？",
-    "options": [
-      "可用性セット (Availability Set)",
-      "可用性ゾーン (Availability Zone)",
-      "リージョンペア (Region Pair)",
-      "リソースグループ"
-    ],
-    "correctAnswers": [
-      2
-    ],
-    "explanation": "【正解】リージョンペア (Region Pair)\n各Azureリージョンは、同じ地理的境界内の別のリージョンとペアになっています（例：東日本と西日本）。これにより、大規模な災害時の復旧や、更新プログラムの順次適用（ペアの一方ずつ更新）が可能になります。\n\n【不正解の選択肢】\n・可用性セット / 可用性ゾーン: これらは同一リージョン内での高可用性機能です。"
-  },
-  {
-    "id": 41,
-    "text": "Azure Logic Appsの主な機能は何ですか？",
-    "options": [
-      "コードを記述せずにワークフローを自動化し、アプリやデータを統合する",
-      "コンテナ化されたアプリケーションを実行する",
-      "大量のデータを分析する",
-      "Webサイトをホスティングする"
-    ],
-    "correctAnswers": [
-      0
-    ],
-    "explanation": "【正解】コードを記述せずにワークフローを自動化し、アプリやデータを統合する\nLogic Appsは、GUIデザイナーを使用してトリガーとアクションを組み合わせ、異なるサービス間（例：Twitterで特定のツイートがあったらTeamsに通知するなど）のワークフローを作成するローコード/ノーコードサービスです。\n\n【不正解の選択肢】\n・コンテナ: AKSやACIの役割です。\n・データ分析: Synapse Analyticsなどの役割です。\n・Webサイト: App Serviceの役割です。"
-  },
-  {
-    "id": 42,
-    "text": "ネットワークセキュリティグループ (NSG) で制御できるトラフィックの要素（5タプル）に含まれないものはどれですか？",
-    "options": [
-      "送信元IPアドレス",
-      "宛先ポート番号",
-      "プロトコル (TCP/UDP)",
-      "HTTPヘッダーの内容"
-    ],
-    "correctAnswers": [
-      3
-    ],
-    "explanation": "【正解】HTTPヘッダーの内容\nNSGはレイヤー4（トランスポート層）で動作するため、レイヤー7の情報であるHTTPヘッダーやURLパスの中身を見てフィルタリングすることはできません。それにはApplication Gateway (WAF)が必要です。\n\n【不正解の選択肢】\nNSGのルールは、送信元IP、送信元ポート、宛先IP、宛先ポート、プロトコルの5つの情報（5タプル）に基づいて許可/拒否を定義します。"
-  },
-  {
-    "id": 43,
-    "text": "Azure Virtual Desktop (AVD) の特徴として正しいものはどれですか？",
-    "options": [
-      "物理的なデスクトップPCをレンタルするサービス",
-      "クラウド上で実行されるWindows 10/11のマルチセッション環境を提供できる",
-      "LinuxのみをサポートするVDIソリューション",
-      "VPN接続機能のみを提供する"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】クラウド上で実行されるWindows 10/11のマルチセッション環境を提供できる\nAVDは、1台の仮想マシンに複数のユーザーが同時に接続できる「Windows 10/11 Enterprise マルチセッション」を利用可能で、コスト効率よくVDI環境を構築できます。\n\n【不正解の選択肢】\n・物理PCレンタル: クラウド上の仮想デスクトップです。\n・Linuxのみ: WindowsがメインですがLinuxもサポートされつつあります。しかし特徴的なのはWindowsマルチセッションです。\n・VPNのみ: デスクトップ画面全体やアプリ配信を行います。"
-  },
-  {
-    "id": 44,
-    "text": "IoT CentralとIoT Hubの主な違いは何ですか？",
-    "options": [
-      "IoT CentralはSaaS（完成されたソリューション）、IoT HubはPaaS（構成部品）である",
-      "IoT Centralは無料、IoT Hubは有料である",
-      "IoT Hubはデバイス管理ができない",
-      "IoT Centralはオンプレミス専用である"
-    ],
-    "correctAnswers": [
-      0
-    ],
-    "explanation": "【正解】IoT CentralはSaaS、IoT HubはPaaSである\nIoT Hubはデバイスとの通信を担うPaaSであり、その上にアプリを自作する必要があります。IoT Centralは、IoT Hubを内部で使用しつつ、ダッシュボードや管理画面があらかじめ用意されたSaaSソリューションです。\n\n【不正解の選択肢】\n・無料/有料: どちらも有料プランがあります。\n・IoT Hubはデバイス管理不可: IoT Hubもデバイスツインなどを用いて管理可能です。\n・オンプレミス専用: どちらもクラウドサービスです。"
-  },
-  {
-    "id": 45,
-    "text": "Azure Sentinelは何を提供するサービスですか？",
-    "options": [
-      "DDoS保護",
-      "クラウドネイティブなSIEM（セキュリティ情報イベント管理）とSOAR",
-      "アンチウイルスソフトウェア",
-      "パスワード管理"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】クラウドネイティブなSIEM（セキュリティ情報イベント管理）とSOAR\nAzure Sentinelは、組織全体からログを収集・分析し、脅威を検出して自動対応（SOAR）するためのセキュリティ分析基盤です。\n\n【不正解の選択肢】\n・DDoS保護: Azure DDoS Protectionです。\n・アンチウイルス: Microsoft Defender for Cloud / Endpointなどが担当します。"
-  },
-  {
-    "id": 46,
-    "text": "Azure Spot Virtual Machines（スポットインスタンス）を利用するのに適したシナリオはどれですか？",
-    "options": [
-      "企業のメインとなるWebサーバー",
-      "中断されると困るデータベースサーバー",
-      "バッチ処理やテスト環境など、中断が許容されるワークロード",
-      "24時間365日稼働が必要な基幹システム"
-    ],
-    "correctAnswers": [
-      2
-    ],
-    "explanation": "【正解】バッチ処理やテスト環境など、中断が許容されるワークロード\nSpot VMは、Azureの余剰キャパシティを安価に利用できますが、Azure側でリソースが必要になった場合に強制的に停止（エビクション）される可能性があります。\n\n【不正解の選択肢】\n停止する可能性があるため、Webサーバー、DB、基幹システムなどの安定稼働が必要な用途には適しません。"
-  },
-  {
-    "id": 47,
-    "text": "Azure ADの「セルフサービスパスワードリセット (SSPR)」機能を利用するために必要な条件の1つは何ですか？",
-    "options": [
-      "ユーザーがグローバル管理者であること",
-      "ユーザーが電話番号やメールアドレスなどの認証方法を登録していること",
-      "Azure AD Premium P2ライセンスが必須である",
-      "管理者による承認が毎回必要である"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】ユーザーが電話番号やメールアドレスなどの認証方法を登録していること\nパスワードを忘れた際に本人確認を行うため、事前に認証用連絡先を登録しておく必要があります。\n\n【不正解の選択肢】\n・ユーザーがグローバル管理者: 一般ユーザーも利用可能です。\n・Premium P2必須: Freeプラン(クラウドユーザーのみ)でも一部利用可能ですが、オンプレミス同期ユーザーの書き戻しなどはP1以上が必要です。基本機能としてはP2必須ではありません。\n・管理者の承認: セルフサービスなので管理者の都度承認は不要です。"
-  },
-  {
-    "id": 48,
-    "text": "Azure Advisorが推奨事項を提供する4つの柱（カテゴリ）に含まれないものはどれですか？",
-    "options": [
-      "コスト (Cost)",
-      "セキュリティ (Security)",
-      "パフォーマンス (Performance)",
-      "開発言語の選定 (Programming Language)"
-    ],
-    "correctAnswers": [
-      3
-    ],
-    "explanation": "【正解】開発言語の選定 (Programming Language)\nAzure Advisorはリソースの構成を分析しますが、どのプログラミング言語を使うべきかといったアプリケーション設計レベルのアドバイスは行いません。\n\n【不正解の選択肢】\nAzure Advisorの5つの柱は、「信頼性 (Reliability)」「セキュリティ (Security)」「パフォーマンス (Performance)」「コスト (Cost)」「オペレーショナルエクセレンス (Operational Excellence)」です。"
-  },
-  {
-    "id": 49,
-    "text": "データの「主権」や「コンプライアンス」の観点で、中国におけるAzureの利用において特徴的なことは何ですか？",
-    "options": [
-      "Microsoftが直接運用している",
-      "21Vianetという現地のパートナー企業によって運用されている",
-      "中国ではAzureを利用できない",
-      "全世界のAzureリージョンと完全に統合されている"
-    ],
-    "correctAnswers": [
-      1
-    ],
-    "explanation": "【正解】21Vianetという現地のパートナー企業によって運用されている\n中国の法規制により、Azure ChinaリージョンはMicrosoftではなく、現地の21Vianet社によって運用されており、グローバルなAzureとは物理的・論理的に分離されています。\n\n【不正解の選択肢】\n・Microsoftが直接運用: 中国では規制上できません。\n・利用できない: 利用可能です。\n・完全に統合: アカウント体系などが分離されています。"
-  },
-  {
-    "id": 50,
-    "text": "Azureサブスクリプションの無料アカウントを作成した際に提供される特典として間違っているものはどれですか？",
-    "options": [
-      "最初の30日間使用できるクレジット",
-      "12か月間無料の人気サービス",
-      "常に無料の25以上のサービス",
-      "無制限の仮想マシン作成権限"
-    ],
-    "correctAnswers": [
-      3
-    ],
-    "explanation": "【正解】無制限の仮想マシン作成権限\n無料アカウントでもリソースの上限（クォータ）やクレジットの上限があり、無制限にVMを作成することはできません。\n\n【不正解の選択肢】\nこれらは無料アカウントの特典として正しく提供されています（クレジット、12ヶ月無料枠、常時無料枠）。"
-  }
-]
+{
+  "title": "Azure Fundamentals (AZ-900) 模擬問題集",
+  "questions": [
+    {
+      "id": 1,
+      "text": "あなたの会社は、オンプレミスのデータセンターからAzureへの移行を計画しています。初期費用（CapEx）を最小限に抑え、使用したリソースに対してのみ料金を支払うモデルを採用したいと考えています。どのクラウドモデルを選択すべきですか？",
+      "options": [
+        "パブリッククラウド",
+        "プライベートクラウド",
+        "ハイブリッドクラウド",
+        "専用ホスティング"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】パブリッククラウド\nパブリッククラウドは、ハードウェアやインフラストラクチャを購入する必要がなく、従量課金制（OpEx）で利用できるため、初期費用を最小限に抑えることができます。\n\n【不正解の選択肢】\n・プライベートクラウド: 自社専用の環境を構築するため、ハードウェアの購入や維持管理が必要となり、通常は初期費用が高くなります。\n・ハイブリッドクラウド: パブリックとプライベートの両方を組み合わせるため、プライベート部分のコストが発生し、初期費用ゼロではありません。\n・専用ホスティング: 物理サーバーを専有するため、通常は固定費や初期設定費用がかかります。"
+    },
+    {
+      "id": 2,
+      "text": "Azureのサービスにおいて、仮想マシン（VM）の管理責任範囲として正しいものはどれですか？（IaaSの責任共有モデル）",
+      "options": [
+        "OSのパッチ適用はMicrosoftの責任である",
+        "物理ホストのメンテナンスはユーザーの責任である",
+        "インストールするアプリケーションの管理はユーザーの責任である",
+        "データセンターの物理セキュリティはユーザーの責任である"
+      ],
+      "correctAnswers": [
+        2
+      ],
+      "explanation": "【正解】インストールするアプリケーションの管理はユーザーの責任である\nIaaS（Infrastructure as a Service）では、OSより上のレイヤー（ミドルウェア、ランタイム、データ、アプリケーション）はユーザーが管理責任を負います。\n\n【不正解の選択肢】\n・OSのパッチ適用: IaaSではユーザーがOSの管理権限を持つため、OSの更新やパッチ適用もユーザーの責任です（PaaSの場合はMicrosoftの責任）。\n・物理ホストのメンテナンス: 物理的なサーバーやネットワーク機器の管理はクラウドプロバイダー（Microsoft）の責任です。\n・データセンターの物理セキュリティ: 建物の警備や入退室管理などはMicrosoftの責任です。"
+    },
+    {
+      "id": 3,
+      "text": "世界中の複数のリージョンにデータを複製し、1つのリージョンが完全に停止してもデータへのアクセスを維持できるストレージ冗長オプションはどれですか？",
+      "options": [
+        "ローカル冗長ストレージ (LRS)",
+        "ゾーン冗長ストレージ (ZRS)",
+        "地理冗長ストレージ (GRS)",
+        "読み取りアクセス地理冗長ストレージ (RA-GRS)"
+      ],
+      "correctAnswers": [
+        2
+      ],
+      "explanation": "【正解】地理冗長ストレージ (GRS)\nGRSは、プライマリリージョンのデータを数百マイル離れたセカンダリリージョンに非同期で複製します。リージョン全体の障害が発生した場合でもデータを回復できます。\n\n【不正解の選択肢】\n・ローカル冗長ストレージ (LRS): 同一データセンター内で3回複製されますが、データセンター全体の障害には対応できません。\n・ゾーン冗長ストレージ (ZRS): 同一リージョン内の異なる可用性ゾーン（Availability Zone）に複製されますが、リージョン全体の障害には対応できません。\n・読み取りアクセス地理冗長ストレージ (RA-GRS): GRSと同様の冗長性を持ちますが、「読み取りアクセス」が可能になる点が特徴です。設問の要件（リージョン停止時のデータ維持）としてはGRSが基本解ですが、選択肢にGRSがある場合はGRSが最も直接的な答えとなります。"
+    },
+    {
+      "id": 4,
+      "text": "Azureのリソースグループに関する説明として正しいものはどれですか？",
+      "options": [
+        "リソースグループは入れ子（ネスト）にすることができる",
+        "1つのリソースは複数のリソースグループに所属できる",
+        "リソースグループを削除すると、その中のリソースもすべて削除される",
+        "リソースグループとリソースは同じリージョンにある必要がある"
+      ],
+      "correctAnswers": [
+        2
+      ],
+      "explanation": "【正解】リソースグループを削除すると、その中のリソースもすべて削除される\nリソースグループはライフサイクル境界として機能します。グループを削除すると、含まれるすべてのリソースが削除されます。\n\n【不正解の選択肢】\n・リソースグループは入れ子にできる: リソースグループを階層化（リソースグループの中にリソースグループ）することはできません。\n・1つのリソースは複数のリソースグループに所属できる: リソースは必ず1つのリソースグループにのみ所属します。\n・リソースグループとリソースは同じリージョンにある必要がある: リソースグループのメタデータが保存されるリージョンと、その中のリソース（VMなど）のリージョンは異なっていても構いません。"
+    },
+    {
+      "id": 5,
+      "text": "SLA（Service Level Agreement）において「99.99%」の稼働率が保証されている場合、年間の許容ダウンタイムはおよそどれくらいですか？",
+      "options": [
+        "約5分",
+        "約52分",
+        "約8時間",
+        "約3日"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】約52分\n99.99%（フォー・ナイン）の稼働率は、年間で約52.56分のダウンタイムを許容します。\n計算式: 365日 × 24時間 × 60分 × (1 - 0.9999) = 525,600分 × 0.0001 = 52.56分\n\n【不正解の選択肢】\n・約5分: 99.999%（ファイブ・ナイン）の場合です。\n・約8時間: 99.9%（スリー・ナイン）の場合、年間約8.76時間のダウンタイムとなります。\n・約3日: 99%（ツー・ナイン）の場合、年間約3.65日のダウンタイムとなります。"
+    },
+    {
+      "id": 6,
+      "text": "Azure Active Directory (Microsoft Entra ID) の機能で、ユーザーが通常の場所とは異なる場所やデバイスからサインインしようとした場合に、多要素認証（MFA）を要求するような動的なアクセス制御を行う機能は何ですか？",
+      "options": [
+        "Azure RBAC",
+        "条件付きアクセス (Conditional Access)",
+        "Azure Policy",
+        "Privileged Identity Management (PIM)"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】条件付きアクセス (Conditional Access)\n条件付きアクセスは、「If（もし～なら）」と「Then（～する）」のシグナルを使用して、アクセスを許可、ブロック、またはMFAを要求するかを動的に決定します。\n\n【不正解の選択肢】\n・Azure RBAC: リソースに対する「誰が何をできるか」という権限管理を行いますが、サインイン時の状況（場所やリスク）に応じた動的な制御ではありません。\n・Azure Policy: リソースの構成ルール（例：特定のリージョン以外への作成禁止）を強制するものですが、ユーザー認証の制御ではありません。\n・Privileged Identity Management (PIM): 特権ロール（管理者権限）を一時的に付与・管理するための機能です。"
+    },
+    {
+      "id": 7,
+      "text": "Azureの仮想ネットワーク（VNet）間でプライベートIPアドレスを使用して通信を行いたい場合、何を設定する必要がありますか？",
+      "options": [
+        "VNet ピアリング",
+        "VPN Gateway",
+        "ExpressRoute",
+        "Azure DNS"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】VNet ピアリング\nVNetピアリングを使用すると、2つの仮想ネットワークを接続し、あたかも1つのネットワークであるかのようにプライベートIPで通信できます。インターネットを経由せず、Microsoftのバックボーンネットワークを利用します。\n\n【不正解の選択肢】\n・VPN Gateway: VNet間の接続も可能ですが、暗号化されたトンネルを使用するため、ピアリングに比べて帯域幅の制限やレイテンシが発生する可能性があります。主にオンプレミスとの接続に使用されます。\n・ExpressRoute: オンプレミスネットワークとAzureを専用線で接続するサービスです。\n・Azure DNS: ドメイン名の名前解決を提供するサービスであり、ネットワーク接続機能ではありません。"
+    },
+    {
+      "id": 8,
+      "text": "アプリケーションのコードを変更することなく、SQLデータベースの接続文字列やAPIキーなどの機密情報を安全に管理・保存するためのサービスはどれですか？",
+      "options": [
+        "Azure Storage Account",
+        "Azure Key Vault",
+        "Azure Sentinel",
+        "Azure Information Protection"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】Azure Key Vault\nAzure Key Vaultは、シークレット（接続文字列、パスワード）、キー（暗号化キー）、証明書を一元的に安全に管理するためのサービスです。\n\n【不正解の選択肢】\n・Azure Storage Account: データを保存できますが、機密情報の管理に特化した機能（アクセス制御、監査、ローテーションなど）はKey Vaultが優れています。\n・Azure Sentinel: SIEM（セキュリティ情報イベント管理）およびSOARソリューションであり、脅威の検出と対応に使用されます。\n・Azure Information Protection: ドキュメントやメールの分類、ラベル付け、保護を行うサービスです。"
+    },
+    {
+      "id": 9,
+      "text": "Azureのコストを見積もる際、将来の構成を入力して概算費用を算出するために使用するツールはどれですか？",
+      "options": [
+        "Azure Cost Management",
+        "料金計算ツール (Pricing Calculator)",
+        "TCO 計算ツール (Total Cost of Ownership Calculator)",
+        "Azure Advisor"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】料金計算ツール (Pricing Calculator)\n特定のリソース構成（例：VMのサイズ、ストレージ容量、リージョン）を選択し、その構成での月額見積もりを算出するためのツールです。\n\n【不正解の選択肢】\n・Azure Cost Management: 実際に発生したコストの監視、分析、予算設定を行うためのツールです。\n・TCO 計算ツール: オンプレミス環境とAzure環境のコストを比較し、移行によるコスト削減効果を試算するためのツールです。\n・Azure Advisor: 既存のリソース構成を分析し、コスト削減、セキュリティ、パフォーマンス向上のための推奨事項を提供するサービスです。"
+    },
+    {
+      "id": 10,
+      "text": "サーバーレスコンピューティングの特徴として適切でないものはどれですか？",
+      "options": [
+        "インフラストラクチャの管理が不要",
+        "使用した実行時間やリソース量に応じて課金される",
+        "自動的にスケーリングされる",
+        "OSへのフルアクセス権限がある"
+      ],
+      "correctAnswers": [
+        3
+      ],
+      "explanation": "【正解】OSへのフルアクセス権限がある\nサーバーレス（Azure Functionsなど）では、基盤となるOSやハードウェアは完全に抽象化されており、ユーザーはOSにアクセスしたり管理したりすることはできません。\n\n【不正解の選択肢（これらはサーバーレスの特徴です）】\n・インフラストラクチャの管理が不要: サーバーのプロビジョニングやパッチ適用はプラットフォームが行います。\n・使用した実行時間やリソース量に応じて課金される: 待機時間は課金されず、コードが実行された分だけ支払います。\n・自動的にスケーリングされる: リクエスト数に応じて自動的にインスタンスが増減します。"
+    },
+    {
+      "id": 11,
+      "text": "Azure App Serviceのプランにおいて、運用環境で使用するための「デプロイスロット（ステージング環境）」機能が利用可能になる最小のティア（価格レベル）はどれですか？",
+      "options": [
+        "Free",
+        "Shared",
+        "Basic",
+        "Standard"
+      ],
+      "correctAnswers": [
+        3
+      ],
+      "explanation": "【正解】Standard\nデプロイスロット機能は、Standardティア以上で利用可能です。これにより、ダウンタイムなしで本番環境へのスワップが可能になります。\n\n【不正解の選択肢】\n・Free / Shared: 開発・テスト向けの共有インフラプランで、デプロイスロットやカスタムドメイン（Freeは不可）などの機能に制限があります。\n・Basic: 専用インスタンスですが、デプロイスロット機能は含まれていません。"
+    },
+    {
+      "id": 12,
+      "text": "Azure Monitorの一部で、リソースのデプロイ、変更、削除などの操作履歴（「いつ」「誰が」「何を」したか）を確認できるログはどれですか？",
+      "options": [
+        "メトリック",
+        "アクティビティログ",
+        "診断ログ（リソースログ）",
+        "Application Insights"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】アクティビティログ\nアクティビティログは、サブスクリプションレベルのイベント（リソースの作成、更新、削除など）を記録するログです。監査目的に使用されます。\n\n【不正解の選択肢】\n・メトリック: リソースのパフォーマンス（CPU使用率、メモリなど）を数値データとして一定間隔で収集するものです。\n・診断ログ（リソースログ）: リソース内部の操作に関する詳細なログ（例：SQL Serverへのクエリ実行履歴など）です。\n・Application Insights: アプリケーションのパフォーマンス管理（APM）機能で、アプリ内の例外やリクエスト応答時間などを監視します。"
+    },
+    {
+      "id": 13,
+      "text": "複数のVMに対して負荷分散を行い、着信トラフィックを分散させるレイヤー4（トランスポート層）のロードバランサーはどれですか？",
+      "options": [
+        "Azure Application Gateway",
+        "Azure Load Balancer",
+        "Azure Front Door",
+        "Azure Traffic Manager"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】Azure Load Balancer\nAzure Load Balancerは、TCP/UDPプロトコルに基づき、レイヤー4でトラフィックを分散させます。\n\n【不正解の選択肢】\n・Azure Application Gateway: レイヤー7（HTTP/HTTPS）のロードバランサーで、Webアプリケーションファイアウォール（WAF）機能などを持ちます。\n・Azure Front Door: グローバルなレイヤー7ロードバランサーで、CDN機能などを統合しています。\n・Azure Traffic Manager: DNSベースのトラフィックルーティングサービスで、実際にトラフィックを中継するわけではありません。"
+    },
+    {
+      "id": 14,
+      "text": "IoTデバイスから毎秒数百万件のイベントデータを受信し、リアルタイム分析のために他のサービスへデータをストリーミングするのに最適なサービスはどれですか？",
+      "options": [
+        "Azure IoT Hub",
+        "Azure Event Hubs",
+        "Azure Notification Hubs",
+        "Azure Service Bus"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】Azure Event Hubs\nEvent Hubsは、ビッグデータストリーミングプラットフォームであり、毎秒数百万のイベントを取り込むことができます。\n\n【不正解の選択肢】\n・Azure IoT Hub: IoTデバイスとの双方向通信（デバイス管理やコマンド送信）に特化しています。データ受信も可能ですが、純粋な大量イベントストリーミングとしてはEvent Hubsが特化しています（ただし、IoT Hubも内部でEvent Hubs互換エンドポイントを持ちます。設問が「デバイス管理」を含まない場合、Event Hubsがより一般的です）。\n・Azure Notification Hubs: モバイルデバイスなどへのプッシュ通知を送信するためのサービスです。\n・Azure Service Bus: エンタープライズメッセージング（キューやトピック）に使用され、順序保証やトランザクション処理が重要ですが、大量ストリーミングにはEvent Hubsが適しています。"
+    },
+    {
+      "id": 15,
+      "text": "Azureのガバナンスにおいて、特定のリソースタイプ（例：GシリーズのVM）の作成を禁止したり、すべてのリソースに特定のタグを強制したりするために使用するサービスはどれですか？",
+      "options": [
+        "Azure RBAC",
+        "Azure Policy",
+        "Azure Blueprints",
+        "Azure Monitor"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】Azure Policy\nAzure Policyは、リソースが組織の基準やコンプライアンス要件に準拠しているかを評価し、違反するリソースの作成を拒否したり、設定を強制したりします。\n\n【不正解の選択肢】\n・Azure RBAC: ユーザーの操作権限（作成できる、削除できるなど）を制御しますが、リソースのプロパティ（VMのサイズやタグの有無）に基づく細かい制限は行いません。\n・Azure Blueprints: RBAC、ポリシー、ARMテンプレートなどをひとまとめにして環境定義を作成するものですが、ルールの定義自体はPolicyが行います。\n・Azure Monitor: 監視サービスです。"
+    },
+    {
+      "id": 16,
+      "text": "データサイエンティストが機械学習モデルを構築・トレーニングするためのコラボレーション環境を提供するサービスはどれですか？",
+      "options": [
+        "Azure Cognitive Services",
+        "Azure Machine Learning",
+        "Azure Bot Service",
+        "Azure Databricks"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】Azure Machine Learning\nAzure Machine Learningは、モデルの構築、トレーニング、デプロイ、管理を行うための統合プラットフォームです。Jupyter Notebookなどが利用可能です。\n\n【不正解の選択肢】\n・Azure Cognitive Services: 視覚、音声、言語などの学習済みAIモデルをAPIとして提供するサービスです（モデルを自作するのではなく利用する）。\n・Azure Bot Service: チャットボットを開発・管理するためのサービスです。\n・Azure Databricks: Apache Sparkベースの分析プラットフォームで機械学習も可能ですが、設問の「機械学習モデルのライフサイクル管理」としてはAzure Machine Learningが主要な正解です。"
+    },
+    {
+      "id": 17,
+      "text": "Azure SQL Databaseにおいて、データベースのパフォーマンスを自動的にチューニング（インデックスの作成・削除など）する機能は何ですか？",
+      "options": [
+        "Elastic Pool",
+        "自動チューニング",
+        "ジオレプリケーション",
+        "Advanced Data Security"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】自動チューニング\nAzure SQL Databaseの自動チューニング機能は、ワークロードを分析し、パフォーマンスを向上させるためにインデックスの作成や削除、クエリプランの修正を自動的に行います。\n\n【不正解の選択肢】\n・Elastic Pool: 複数のデータベース間でリソース（DTUやvCore）を共有し、コスト効率を高める機能です。\n・ジオレプリケーション: データベースのセカンダリレプリカを別のリージョンに作成する機能です。\n・Advanced Data Security: 脆弱性評価や脅威検出を提供するセキュリティ機能群です。"
+    },
+    {
+      "id": 18,
+      "text": "オンプレミスのActive DirectoryとAzure Active Directoryを同期し、ユーザーが同じパスワードで両方の環境にサインインできるようにするためのツールはどれですか？",
+      "options": [
+        "Azure AD Connect",
+        "Azure AD Domain Services",
+        "Azure AD B2C",
+        "Azure AD Application Proxy"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】Azure AD Connect\nAzure AD Connectは、オンプレミスのIDインフラストラクチャをMicrosoft Entra ID（旧Azure AD）と統合するためのツールです。パスワードハッシュ同期などを行います。\n\n【不正解の選択肢】\n・Azure AD Domain Services: Azure上でマネージドなドメインコントローラー機能（LDAP, Kerberosなど）を提供するサービスです。\n・Azure AD B2C: 顧客向けのID管理サービス（FacebookやGoogleアカウントでのログインなど）です。\n・Azure AD Application Proxy: オンプレミスのWebアプリに外部から安全にアクセスするための機能です。"
+    },
+    {
+      "id": 19,
+      "text": "Azure Marketplaceから提供されるサードパーティ製のネットワーク仮想アプライアンス（ファイアウォールなど）へのトラフィックをルーティングするために、ユーザー定義ルート（UDR）を作成する場合、ネクストホップの種類は何に設定しますか？",
+      "options": [
+        "Virtual Network",
+        "Internet",
+        "Virtual Appliance",
+        "Virtual Network Gateway"
+      ],
+      "correctAnswers": [
+        2
+      ],
+      "explanation": "【正解】Virtual Appliance\n特定のVM（ファイアウォールやルーターとして機能するNVA）へトラフィックを転送する場合、ネクストホップの種類として「Virtual Appliance（仮想アプライアンス）」を選択し、そのVMのプライベートIPアドレスを指定します。\n\n【不正解の選択肢】\n・Virtual Network: VNet内の通信に使用されます（デフォルト）。\n・Internet: インターネットへの直接通信に使用されます。\n・Virtual Network Gateway: VPNゲートウェイに向けた通信に使用されます。"
+    },
+    {
+      "id": 20,
+      "text": "コンテナ化されたアプリケーションをオーケストレーション（管理、スケーリング、デプロイ）するための業界標準のプラットフォームを提供するAzureサービスはどれですか？",
+      "options": [
+        "Azure Container Instances (ACI)",
+        "Azure Kubernetes Service (AKS)",
+        "Azure App Service for Containers",
+        "Azure Container Registry"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】Azure Kubernetes Service (AKS)\nAKSは、マネージドなKubernetes環境を提供し、大規模なコンテナオーケストレーションを簡素化します。\n\n【不正解の選択肢】\n・Azure Container Instances (ACI): サーバーレスでコンテナを単発実行するのに適していますが、オーケストレーション機能（複数コンテナの連携管理）は限定的です。\n・Azure App Service for Containers: Webアプリとしてコンテナを実行するのに適していますが、Kubernetesのような複雑なオーケストレーションではありません。\n・Azure Container Registry: コンテナイメージ（Dockerイメージ）を保存するためのプライベートレジストリです。"
+    },
+    {
+      "id": 21,
+      "text": "複数のサブスクリプションを階層的にグループ化し、ポリシーやアクセス制御を一括適用して管理するための論理コンテナはどれですか？",
+      "options": [
+        "リソースグループ",
+        "管理グループ (Management Groups)",
+        "Azure Active Directory テナント",
+        "リージョン"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】管理グループ (Management Groups)\n管理グループを使用すると、複数のサブスクリプションをグループ化し、ガバナンス（ポリシーやRBAC）を階層的に適用できます。ルート管理グループの下に最大6階層まで作成可能です。\n\n【不正解の選択肢】\n・リソースグループ: リソースをまとめる単位ですが、サブスクリプションの下位に位置します。\n・Azure Active Directory テナント: ID管理の境界ですが、リソースの階層管理とは異なります。\n・リージョン: 地理的な場所の単位です。"
+    },
+    {
+      "id": 22,
+      "text": "Azureのサービスが計画メンテナンスや障害によって影響を受けているかどうか、パーソナライズされたダッシュボードで確認できるサービスはどれですか？",
+      "options": [
+        "Azure Status",
+        "Azure Service Health",
+        "Azure Monitor",
+        "Azure Security Center"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】Azure Service Health\nAzure Service Healthは、自分が利用しているリソースやリージョンに影響を与える障害、計画メンテナンス、正常性に関する通知を提供します。\n\n【不正解の選択肢】\n・Azure Status: 全世界のAzureサービスの稼働状況を示す公開ページですが、個々のユーザーのリソースに特化した情報は提供しません。\n・Azure Monitor: リソースのパフォーマンス監視を行いますが、Azure基盤側の障害情報はService Healthが担当です。\n・Azure Security Center: セキュリティポスチャ管理を提供します。"
+    },
+    {
+      "id": 23,
+      "text": "SQL ServerのデータベースをAzureに移行したいが、OSレベルのアクセスやSQL Serverエージェントなどの機能が必要な場合、どのデプロイオプションが最適ですか？",
+      "options": [
+        "Azure SQL Database",
+        "Azure SQL Managed Instance",
+        "SQL Server on Azure Virtual Machines",
+        "Azure Cosmos DB"
+      ],
+      "correctAnswers": [
+        2
+      ],
+      "explanation": "【正解】SQL Server on Azure Virtual Machines\nVM上にSQL Serverをインストールするため、OSへのフルアクセスが可能であり、オンプレミスとほぼ同じ環境を再現できます。\n\n【不正解の選択肢】\n・Azure SQL Managed Instance: SQL Serverとの高い互換性（SQL Agentなど）を持ちますが、OSへのアクセスはできません（PaaS）。\n・Azure SQL Database: フルマネージドのPaaSであり、OSアクセスや一部のSQL Server機能（クロスデータベースクエリなど）に制限があります。\n・Azure Cosmos DB: NoSQLデータベースであり、SQL Serverとは異なります。"
+    },
+    {
+      "id": 24,
+      "text": "Azure Blob Storageにおいて、アクセス頻度が低く、読み取り待ち時間が数時間かかっても問題ないアーカイブデータの保存に最適なアクセス層はどれですか？",
+      "options": [
+        "Hot (ホット)",
+        "Cool (クール)",
+        "Archive (アーカイブ)",
+        "Premium (プレミアム)"
+      ],
+      "correctAnswers": [
+        2
+      ],
+      "explanation": "【正解】Archive (アーカイブ)\nアーカイブ層は、ストレージコストが最も安いですが、データを取り出す（リハイドレート）のに数時間かかります。長期保存に適しています。\n\n【不正解の選択肢】\n・Hot (ホット): 頻繁にアクセスされるデータ向け。ストレージコストは高いがアクセスは安価。\n・Cool (クール): 少なくとも30日間保存される、アクセス頻度の低いデータ向け。即時アクセス可能です。\n・Premium (プレミアム): 高いパフォーマンスが必要なワークロード向け（SSDベース）。"
+    },
+    {
+      "id": 25,
+      "text": "DevOpsの実践において、コードの変更を自動的にビルド、テスト、デプロイするためのパイプラインを提供するサービスはどれですか？",
+      "options": [
+        "Azure Repos",
+        "Azure Boards",
+        "Azure Pipelines",
+        "Azure Artifacts"
+      ],
+      "correctAnswers": [
+        2
+      ],
+      "explanation": "【正解】Azure Pipelines\nAzure Pipelinesは、CI/CD（継続的インテグレーション/継続的デリバリー）を実現するためのサービスで、あらゆる言語やプラットフォームのビルド・テスト・デプロイを自動化します。\n\n【不正解の選択肢】\n・Azure Repos: Gitリポジトリのホスティングサービスです。\n・Azure Boards: タスク管理、カンバンボード、バグ追跡などのプロジェクト管理機能です。\n・Azure Artifacts: パッケージ（Maven, npm, NuGetなど）の管理機能です。"
+    },
+    {
+      "id": 26,
+      "text": "AzureのWebアプリケーションファイアウォール（WAF）は、主にどのような攻撃からアプリケーションを保護しますか？",
+      "options": [
+        "DDoS攻撃（ボリューム攻撃）",
+        "SQLインジェクションやクロスサイトスクリプティング（XSS）",
+        "RDP総当たり攻撃",
+        "フィッシングメール"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】SQLインジェクションやクロスサイトスクリプティング（XSS）\nWAFは、OSI参照モデルのレイヤー7（アプリケーション層）で動作し、OWASP Top 10に含まれるような一般的なWeb脆弱性攻撃を検知・ブロックします。\n\n【不正解の選択肢】\n・DDoS攻撃: 基本的なDDoS保護はAzure DDoS Protectionが提供します。\n・RDP総当たり攻撃: これは管理ポートへの攻撃であり、NSGやJIT VMアクセスなどで防ぎます。\n・フィッシングメール: これはメールセキュリティの領域であり、Microsoft Defender for Office 365などが対応します。"
+    },
+    {
+      "id": 27,
+      "text": "組織が独自のコンプライアンス要件（例：データ主権のために特定の国にのみデータを保存する）を満たすために利用できる、Microsoftが提供するドキュメントや情報のポータルサイトは何ですか？",
+      "options": [
+        "Microsoft Privacy Statement",
+        "Service Trust Portal",
+        "Azure Compliance Manager",
+        "Azure Knowledge Center"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】Service Trust Portal\nService Trust Portalは、監査レポート、コンプライアンスガイド、セキュリティ評価など、Microsoftのクラウドサービスがどのようにデータを保護し、規制に準拠しているかを示す資料を公開しているサイトです。\n\n【不正解の選択肢】\n・Microsoft Privacy Statement: プライバシーに関する声明文です。\n・Azure Compliance Manager: これはMicrosoft Purviewの一部として、自社のコンプライアンススコアを管理するツールですが、公開情報のポータルという意味ではService Trust Portalが適切です。\n・Azure Knowledge Center: 一般的な質問への回答集です。"
+    },
+    {
+      "id": 28,
+      "text": "インフラストラクチャをコードとして管理（IaC）するために使用される、AzureネイティブのJSON形式のテンプレートは何ですか？",
+      "options": [
+        "Terraform",
+        "Ansible Playbook",
+        "Azure Resource Manager (ARM) テンプレート",
+        "PowerShell DSC"
+      ],
+      "correctAnswers": [
+        2
+      ],
+      "explanation": "【正解】Azure Resource Manager (ARM) テンプレート\nARMテンプレートは、Azureのリソース定義をJSON形式で記述し、宣言的にデプロイするための仕組みです。\n\n【不正解の選択肢】\n・Terraform: HashiCorp社製のIaCツールで、HCL言語を使用します（Azureでもよく使われますが、AzureネイティブのJSON形式ではありません）。\n・Ansible Playbook: 構成管理ツールで、YAML形式を使用します。\n・PowerShell DSC: サーバーの構成をコードで管理するものですが、リソースのプロビジョニング（作成）の主役はARMテンプレートです。"
+    },
+    {
+      "id": 29,
+      "text": "Azure Functionsの「消費プラン（Consumption Plan）」における課金モデルはどのようなものですか？",
+      "options": [
+        "事前に予約したインスタンス数に基づいて月額固定料金を支払う",
+        "関数の実行回数と実行時間（GB秒）に基づいて支払う",
+        "常時稼働しているサーバーのCPU使用率に基づいて支払う",
+        "データの保存容量のみに基づいて支払う"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】関数の実行回数と実行時間（GB秒）に基づいて支払う\n消費プランはサーバーレスモデルであり、関数が実行されている間のみリソースが割り当てられ、そのリソース消費量（メモリ×時間）と実行回数に対して課金されます。\n\n【不正解の選択肢】\n・事前に予約したインスタンス数...: これはApp Service Plan（Dedicated）のモデルです。\n・常時稼働しているサーバー...: これもApp Service Planの特徴です。\n・データの保存容量のみ...: これはStorage Accountなどの特徴です。"
+    },
+    {
+      "id": 30,
+      "text": "Azureサブスクリプション内のリソースにタグを付ける主な目的として、適切でないものはどれですか？",
+      "options": [
+        "コスト管理（部門ごとの課金振り分けなど）",
+        "リソースの整理と検索",
+        "リソースへのアクセス制御権限の付与",
+        "運用管理の効率化（環境や所有者の明示）"
+      ],
+      "correctAnswers": [
+        2
+      ],
+      "explanation": "【正解】リソースへのアクセス制御権限の付与\nタグ自体にはアクセス制御機能はありません。アクセス制御はRBAC（ロールベースアクセス制御）で行います。（※ただし、条件付きアクセスなどでタグを条件にすることは高度な設定でありえますが、タグの「主な目的」ではありません）\n\n【不正解の選択肢（これらはタグの目的です）】\n・コスト管理: Cost Managementでタグごとにコストを集計できます。\n・リソースの整理: 特定のプロジェクトや環境でリソースをフィルタリングできます。\n・運用管理: 所有者や環境（Dev/Prod）を明示するのに役立ちます。"
+    },
+    {
+      "id": 31,
+      "text": "Azure Filesを使用すると、どのようなプロトコルを使用してファイル共有にアクセスできますか？",
+      "options": [
+        "SMB (Server Message Block)",
+        "FTP (File Transfer Protocol)",
+        "SSH (Secure Shell)",
+        "RDP (Remote Desktop Protocol)"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】SMB (Server Message Block)\nAzure Filesは、業界標準のSMBプロトコル（およびNFS）を介してアクセスできるフルマネージドのファイル共有を提供します。Windows、Linux、macOSからマウント可能です。\n\n【不正解の選択肢】\n・FTP: ファイル転送プロトコルですが、Azure Filesの標準アクセス方法ではありません（Blob StorageにはSFTPサポートがあります）。\n・SSH: リモートコマンド実行のためのプロトコルです。\n・RDP: リモートデスクトップ接続のためのプロトコルです。"
+    },
+    {
+      "id": 32,
+      "text": "ビッグデータ解析のために、構造化データ、半構造化データ、非構造化データをそのままの形式で大量に保存できる「Data Lake」機能を持つストレージサービスはどれですか？",
+      "options": [
+        "Azure SQL Database",
+        "Azure Data Lake Storage Gen2",
+        "Azure Queue Storage",
+        "Azure Disk Storage"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】Azure Data Lake Storage Gen2\nADLS Gen2は、Azure Blob Storageをベースに構築されており、階層型名前空間を持ち、ビッグデータ分析用に最適化されています。\n\n【不正解の選択肢】\n・Azure SQL Database: リレーショナル（構造化）データ向けです。\n・Azure Queue Storage: メッセージキューイング向けです。\n・Azure Disk Storage: VMの仮想ディスクとして使用されます。"
+    },
+    {
+      "id": 33,
+      "text": "世界規模で分散されたNoSQLデータベースサービスで、複数の整合性レベル（Strong, Bounded Staleness, Session, etc.）を選択できるのはどれですか？",
+      "options": [
+        "Azure SQL Database",
+        "Azure Cosmos DB",
+        "Azure Database for MySQL",
+        "Azure Synapse Analytics"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】Azure Cosmos DB\nCosmos DBは、グローバル分散型のマルチモデルNoSQLデータベースであり、5つの整合性レベルを選択して、パフォーマンスと整合性のバランスを調整できます。\n\n【不正解の選択肢】\n・Azure SQL Database / MySQL: リレーショナルデータベースです。\n・Azure Synapse Analytics: データウェアハウスおよび分析サービスです。"
+    },
+    {
+      "id": 34,
+      "text": "Azure サポートプランにおいて、24時間365日の技術サポート（メールおよび電話）が含まれる最小のプランはどれですか？",
+      "options": [
+        "Basic",
+        "Developer",
+        "Standard",
+        "Professional Direct"
+      ],
+      "correctAnswers": [
+        2
+      ],
+      "explanation": "【正解】Standard\nStandardプラン以上で、24時間365日の電話およびメールによる技術サポートが提供されます。\n\n【不正解の選択肢】\n・Basic: すべてのAzureアカウントに含まれますが、技術サポートはなく、課金・サブスクリプション管理のサポートのみです。\n・Developer: 営業時間内のメールサポートのみです。\n・Professional Direct: Standardより上位のプランで、より早い応答時間やエスカレーション管理が含まれます。"
+    },
+    {
+      "id": 35,
+      "text": "Azure Marketplaceとは何ですか？",
+      "options": [
+        "Azureのサービス開発者がコードを共有する場所",
+        "Microsoftおよびパートナーが提供するアプリケーションやサービスを検索・購入・デプロイできるオンラインストア",
+        "Azureの未使用リソースをオークション形式で売買する場所",
+        "Azureのトレーニングコースを受講できるポータル"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】Microsoftおよびパートナーが提供するアプリケーションやサービスを検索・購入・デプロイできるオンラインストア\nAzure Marketplaceでは、認定された数千のアプリケーション（サードパーティ製ファイアウォール、CMS、DBなど）を提供しています。\n\n【不正解の選択肢】\n・コード共有: それはGitHubなどです。\n・リソースのオークション: スポットインスタンス（Spot VM）という概念はありますが、Marketplaceの説明ではありません。\n・トレーニング: それはMicrosoft Learnです。"
+    },
+    {
+      "id": 36,
+      "text": "Azureのリソースロック（Resource Lock）の種類として存在するものはどれですか？",
+      "options": [
+        "CanNotDelete（削除不可） と ReadOnly（読み取り専用）",
+        "Private（非公開） と Public（公開）",
+        "Encrypted（暗号化） と Decrypted（復号化）",
+        "High（高） と Low（低）"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】CanNotDelete（削除不可） と ReadOnly（読み取り専用）\nリソースロックには2種類あります。\n- CanNotDelete: 変更や読み取りは可能だが、削除はできない。\n- ReadOnly: 読み取りのみ可能で、変更も削除もできない。\n\n【不正解の選択肢】\nこれらはリソースロックの種類ではありません。"
+    },
+    {
+      "id": 37,
+      "text": "ID保護機能において、ユーザーが「誰であるか」を確認する要素（知識、所持、生体）を2つ以上組み合わせる認証方式を何と呼びますか？",
+      "options": [
+        "SSO (シングルサインオン)",
+        "MFA (多要素認証)",
+        "RBAC (ロールベースアクセス制御)",
+        "Federation (フェデレーション)"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】MFA (多要素認証)\nMulti-Factor Authenticationは、パスワード（知識）だけでなく、スマホ（所持）や指紋（生体）などを組み合わせてセキュリティを強化します。\n\n【不正解の選択肢】\n・SSO: 1度のログインで複数のサービスを利用できる仕組みです。\n・RBAC: 権限管理の仕組みです。\n・Federation: 異なる組織やドメイン間でID情報を連携する仕組みです。"
+    },
+    {
+      "id": 38,
+      "text": "Azure Governmentはどのような顧客向けに設計されていますか？",
+      "options": [
+        "すべての一般企業",
+        "米国の連邦政府、州政府、地方自治体およびそのパートナー",
+        "欧州連合（EU）の政府機関",
+        "非営利団体（NPO）のみ"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】米国の連邦政府、州政府、地方自治体およびそのパートナー\nAzure Governmentは、物理的に隔離されたデータセンターを使用し、米国政府の厳格なコンプライアンス要件を満たすために提供されている専用リージョンです。\n\n【不正解の選択肢】\n・すべての一般企業: パブリックAzureを使用します。\n・EUの政府機関: 通常のEUリージョンを使用するか、特定の主権クラウド要件がある場合は別の対応となりますが、\"Azure Government\"という製品名は米国向けを指します。\n・非営利団体: Azure for Nonprofitsというプログラムはありますが、専用リージョンではありません。"
+    },
+    {
+      "id": 39,
+      "text": "Azure Cloud Shellの説明として正しいものはどれですか？",
+      "options": [
+        "ローカルPCにインストールして使用するコマンドラインツール",
+        "ブラウザからアクセスできる、認証済みの対話型シェル環境",
+        "GUIベースのリソース管理ツール",
+        "仮想マシンのデスクトップ画面を表示するツール"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】ブラウザからアクセスできる、認証済みの対話型シェル環境\nAzure Portal内から直接起動でき、PowerShellまたはBashを選択してAzureリソースを操作できます。Azure CLIなどのツールがプリインストールされています。\n\n【不正解の選択肢】\n・ローカルPCにインストール...: それはAzure CLIやAzure PowerShellモジュールです。\n・GUIベース...: それはAzure Portalです。\n・デスクトップ画面...: それはBastionやRDPです。"
+    },
+    {
+      "id": 40,
+      "text": "特定のリージョンで自然災害が発生した場合に備えて、少なくとも数百マイル離れた別のリージョンとペアを組む概念を何と呼びますか？",
+      "options": [
+        "可用性セット (Availability Set)",
+        "可用性ゾーン (Availability Zone)",
+        "リージョンペア (Region Pair)",
+        "リソースグループ"
+      ],
+      "correctAnswers": [
+        2
+      ],
+      "explanation": "【正解】リージョンペア (Region Pair)\n各Azureリージョンは、同じ地理的境界内の別のリージョンとペアになっています（例：東日本と西日本）。これにより、大規模な災害時の復旧や、更新プログラムの順次適用（ペアの一方ずつ更新）が可能になります。\n\n【不正解の選択肢】\n・可用性セット / 可用性ゾーン: これらは同一リージョン内での高可用性機能です。"
+    },
+    {
+      "id": 41,
+      "text": "Azure Logic Appsの主な機能は何ですか？",
+      "options": [
+        "コードを記述せずにワークフローを自動化し、アプリやデータを統合する",
+        "コンテナ化されたアプリケーションを実行する",
+        "大量のデータを分析する",
+        "Webサイトをホスティングする"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】コードを記述せずにワークフローを自動化し、アプリやデータを統合する\nLogic Appsは、GUIデザイナーを使用してトリガーとアクションを組み合わせ、異なるサービス間（例：Twitterで特定のツイートがあったらTeamsに通知するなど）のワークフローを作成するローコード/ノーコードサービスです。\n\n【不正解の選択肢】\n・コンテナ: AKSやACIの役割です。\n・データ分析: Synapse Analyticsなどの役割です。\n・Webサイト: App Serviceの役割です。"
+    },
+    {
+      "id": 42,
+      "text": "ネットワークセキュリティグループ (NSG) で制御できるトラフィックの要素（5タプル）に含まれないものはどれですか？",
+      "options": [
+        "送信元IPアドレス",
+        "宛先ポート番号",
+        "プロトコル (TCP/UDP)",
+        "HTTPヘッダーの内容"
+      ],
+      "correctAnswers": [
+        3
+      ],
+      "explanation": "【正解】HTTPヘッダーの内容\nNSGはレイヤー4（トランスポート層）で動作するため、レイヤー7の情報であるHTTPヘッダーやURLパスの中身を見てフィルタリングすることはできません。それにはApplication Gateway (WAF)が必要です。\n\n【不正解の選択肢】\nNSGのルールは、送信元IP、送信元ポート、宛先IP、宛先ポート、プロトコルの5つの情報（5タプル）に基づいて許可/拒否を定義します。"
+    },
+    {
+      "id": 43,
+      "text": "Azure Virtual Desktop (AVD) の特徴として正しいものはどれですか？",
+      "options": [
+        "物理的なデスクトップPCをレンタルするサービス",
+        "クラウド上で実行されるWindows 10/11のマルチセッション環境を提供できる",
+        "LinuxのみをサポートするVDIソリューション",
+        "VPN接続機能のみを提供する"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】クラウド上で実行されるWindows 10/11のマルチセッション環境を提供できる\nAVDは、1台の仮想マシンに複数のユーザーが同時に接続できる「Windows 10/11 Enterprise マルチセッション」を利用可能で、コスト効率よくVDI環境を構築できます。\n\n【不正解の選択肢】\n・物理PCレンタル: クラウド上の仮想デスクトップです。\n・Linuxのみ: WindowsがメインですがLinuxもサポートされつつあります。しかし特徴的なのはWindowsマルチセッションです。\n・VPNのみ: デスクトップ画面全体やアプリ配信を行います。"
+    },
+    {
+      "id": 44,
+      "text": "IoT CentralとIoT Hubの主な違いは何ですか？",
+      "options": [
+        "IoT CentralはSaaS（完成されたソリューション）、IoT HubはPaaS（構成部品）である",
+        "IoT Centralは無料、IoT Hubは有料である",
+        "IoT Hubはデバイス管理ができない",
+        "IoT Centralはオンプレミス専用である"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】IoT CentralはSaaS、IoT HubはPaaSである\nIoT Hubはデバイスとの通信を担うPaaSであり、その上にアプリを自作する必要があります。IoT Centralは、IoT Hubを内部で使用しつつ、ダッシュボードや管理画面があらかじめ用意されたSaaSソリューションです。\n\n【不正解の選択肢】\n・無料/有料: どちらも有料プランがあります。\n・IoT Hubはデバイス管理不可: IoT Hubもデバイスツインなどを用いて管理可能です。\n・オンプレミス専用: どちらもクラウドサービスです。"
+    },
+    {
+      "id": 45,
+      "text": "Azure Sentinelは何を提供するサービスですか？",
+      "options": [
+        "DDoS保護",
+        "クラウドネイティブなSIEM（セキュリティ情報イベント管理）とSOAR",
+        "アンチウイルスソフトウェア",
+        "パスワード管理"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】クラウドネイティブなSIEM（セキュリティ情報イベント管理）とSOAR\nAzure Sentinelは、組織全体からログを収集・分析し、脅威を検出して自動対応（SOAR）するためのセキュリティ分析基盤です。\n\n【不正解の選択肢】\n・DDoS保護: Azure DDoS Protectionです。\n・アンチウイルス: Microsoft Defender for Cloud / Endpointなどが担当します。"
+    },
+    {
+      "id": 46,
+      "text": "Azure Spot Virtual Machines（スポットインスタンス）を利用するのに適したシナリオはどれですか？",
+      "options": [
+        "企業のメインとなるWebサーバー",
+        "中断されると困るデータベースサーバー",
+        "バッチ処理やテスト環境など、中断が許容されるワークロード",
+        "24時間365日稼働が必要な基幹システム"
+      ],
+      "correctAnswers": [
+        2
+      ],
+      "explanation": "【正解】バッチ処理やテスト環境など、中断が許容されるワークロード\nSpot VMは、Azureの余剰キャパシティを安価に利用できますが、Azure側でリソースが必要になった場合に強制的に停止（エビクション）される可能性があります。\n\n【不正解の選択肢】\n停止する可能性があるため、Webサーバー、DB、基幹システムなどの安定稼働が必要な用途には適しません。"
+    },
+    {
+      "id": 47,
+      "text": "Azure ADの「セルフサービスパスワードリセット (SSPR)」機能を利用するために必要な条件の1つは何ですか？",
+      "options": [
+        "ユーザーがグローバル管理者であること",
+        "ユーザーが電話番号やメールアドレスなどの認証方法を登録していること",
+        "Azure AD Premium P2ライセンスが必須である",
+        "管理者による承認が毎回必要である"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】ユーザーが電話番号やメールアドレスなどの認証方法を登録していること\nパスワードを忘れた際に本人確認を行うため、事前に認証用連絡先を登録しておく必要があります。\n\n【不正解の選択肢】\n・ユーザーがグローバル管理者: 一般ユーザーも利用可能です。\n・Premium P2必須: Freeプラン(クラウドユーザーのみ)でも一部利用可能ですが、オンプレミス同期ユーザーの書き戻しなどはP1以上が必要です。基本機能としてはP2必須ではありません。\n・管理者の承認: セルフサービスなので管理者の都度承認は不要です。"
+    },
+    {
+      "id": 48,
+      "text": "Azure Advisorが推奨事項を提供する4つの柱（カテゴリ）に含まれないものはどれですか？",
+      "options": [
+        "コスト (Cost)",
+        "セキュリティ (Security)",
+        "パフォーマンス (Performance)",
+        "開発言語の選定 (Programming Language)"
+      ],
+      "correctAnswers": [
+        3
+      ],
+      "explanation": "【正解】開発言語の選定 (Programming Language)\nAzure Advisorはリソースの構成を分析しますが、どのプログラミング言語を使うべきかといったアプリケーション設計レベルのアドバイスは行いません。\n\n【不正解の選択肢】\nAzure Advisorの5つの柱は、「信頼性 (Reliability)」「セキュリティ (Security)」「パフォーマンス (Performance)」「コスト (Cost)」「オペレーショナルエクセレンス (Operational Excellence)」です。"
+    },
+    {
+      "id": 49,
+      "text": "データの「主権」や「コンプライアンス」の観点で、中国におけるAzureの利用において特徴的なことは何ですか？",
+      "options": [
+        "Microsoftが直接運用している",
+        "21Vianetという現地のパートナー企業によって運用されている",
+        "中国ではAzureを利用できない",
+        "全世界のAzureリージョンと完全に統合されている"
+      ],
+      "correctAnswers": [
+        1
+      ],
+      "explanation": "【正解】21Vianetという現地のパートナー企業によって運用されている\n中国の法規制により、Azure ChinaリージョンはMicrosoftではなく、現地の21Vianet社によって運用されており、グローバルなAzureとは物理的・論理的に分離されています。\n\n【不正解の選択肢】\n・Microsoftが直接運用: 中国では規制上できません。\n・利用できない: 利用可能です。\n・完全に統合: アカウント体系などが分離されています。"
+    },
+    {
+      "id": 50,
+      "text": "Azureサブスクリプションの無料アカウントを作成した際に提供される特典として間違っているものはどれですか？",
+      "options": [
+        "最初の30日間使用できるクレジット",
+        "12か月間無料の人気サービス",
+        "常に無料の25以上のサービス",
+        "無制限の仮想マシン作成権限"
+      ],
+      "correctAnswers": [
+        3
+      ],
+      "explanation": "【正解】無制限の仮想マシン作成権限\n無料アカウントでもリソースの上限（クォータ）やクレジットの上限があり、無制限にVMを作成することはできません。\n\n【不正解の選択肢】\nこれらは無料アカウントの特典として正しく提供されています（クレジット、12ヶ月無料枠、常時無料枠）。"
+    }
+  ]
+}
