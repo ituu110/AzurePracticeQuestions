@@ -15,8 +15,9 @@ function App() {
   
   const handleLoadSample = async () => {
     try {
-        // Use relative path for GitHub Pages compatibility
-        const response = await fetch('./sample-questions.json');
+        // Use import.meta.env.BASE_URL to resolve the correct path
+        const baseUrl = import.meta.env.BASE_URL;
+        const response = await fetch(`${baseUrl}sample-questions.json`);
         const data = await response.json();
         setQuizData(data);
         setUserAnswers(null);
