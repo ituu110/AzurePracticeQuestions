@@ -144,7 +144,7 @@
     },
     {
       "id": 11,
-      "text": "「来週の火曜日に東京で会議を予約したい」という入力から、「予約する（BookMeeting）」という意図（Intent）と、「東京（Location）」「来週の火曜日（Date）」というエンティティを抽出するモデルを構築できるサービスはどれですか？",
+      "text": "「来週の火曜日に東京で会議を予約したい」という入力から、「予約する（BookMeeting）」という意図（Intent）と、「東京（Location）」、「来週の火曜日（Date）」というエンティティを抽出するモデルを構築できるサービスはどれですか？",
       "options": [
         "Azure AI Language (会話言語理解 / CLU)",
         "Azure AI Translator",
@@ -281,6 +281,426 @@
         0
       ],
       "explanation": "【正解】推論 (Inference) / デプロイ\n学習済みモデルを新しいデータに適用して予測を行う段階を推論と呼び、そのためにモデルを利用可能な状態にすることをデプロイと呼びます。"
+    },
+    {
+      "id": 21,
+      "text": "Webサイトやアプリに掲載されるユーザー投稿画像に、暴力的または成人向けの内容が含まれていないかを自動的に検出・ブロックするために最適なAzure AIサービスはどれですか？",
+      "options": [
+        "Azure AI Content Safety",
+        "Azure AI Language",
+        "Azure AI Speech",
+        "Azure AI Immersive Reader"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】Azure AI Content Safety\nテキストや画像内のヘイト、暴力、自傷行為、性的コンテンツを検知する機能を提供します。"
+    },
+    {
+      "id": 22,
+      "text": "視覚障害を持つ人々がWebコンテンツやドキュメントを読みやすくするための機能を備え、テキストの読み上げや文字サイズの調整などの機能を提供するサービスはどれですか？",
+      "options": [
+        "Immersive Reader",
+        "Azure AI Translator",
+        "Azure AI Bot Service",
+        "Azure AI Search"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】Immersive Reader\nあらゆる能力を持つ人々の読解力を向上させるために設計されたツールで、読み上げや翻訳、表示カスタマイズ機能を提供します。"
+    },
+    {
+      "id": 23,
+      "text": "機械学習モデルのトレーニングにおいて、データを「トレーニングデータ」と「評価（検証）データ」に分割する主な理由は何ですか？",
+      "options": [
+        "モデルが未知のデータに対してどれだけ正確に予測できるか（汎化性能）を評価するため",
+        "トレーニング時間を短縮するため",
+        "データストレージを節約するため",
+        "モデルの複雑さを高めるため"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】モデルが未知の...評価するため\n全てのデータを学習に使ってしまうと、テストで「カンニング」することになり、本当に実用可能か判断できません。過学習（Overfitting）を防ぎ、汎化性能を測るために分割します。"
+    },
+    {
+      "id": 24,
+      "text": "独自の製品カタログの画像を学習させ、製品の欠陥（傷や凹みなど）を識別するAIモデルを作成したい場合、どのサービスを使用するのが最も簡単ですか？",
+      "options": [
+        "Azure AI Custom Vision",
+        "Azure AI Face",
+        "Computer Vision API (Read)",
+        "Azure AI Anomaly Detector"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】Azure AI Custom Vision\n独自の画像データセットを使用して、特定の画像分類や物体検出モデルをカスタマイズして構築できるサービスです。"
+    },
+    {
+      "id": 25,
+      "text": "外国語の講演動画に対して、リアルタイムで音声を認識し、別の言語の字幕や音声に変換する機能は何ですか？",
+      "options": [
+        "Speech Translation",
+        "Text to Speech",
+        "Speaker Recognition",
+        "Sentiment Analysis"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】Speech Translation\n音声入力を翻訳し、翻訳されたテキストまたは音声を出力する機能です。"
+    },
+    {
+      "id": 26,
+      "text": "Azure AI Languageの「エンティティリンク（Entity Linking）」機能の説明として正しいものはどれですか？",
+      "options": [
+        "テキスト内の特定の単語（例：「火星」）を識別し、Wikipediaなどのナレッジベース上の記事にリンク付けする",
+        "テキストの言語（英語、日本語など）を判定する",
+        "テキストから個人情報（PII）を削除する",
+        "テキストを要約する"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】テキスト内の特定の単語...リンク付けする\nエンティティの曖昧さを解消し、それが具体的に何を指しているか（コンテキスト）を特定します。"
+    },
+    {
+      "id": 27,
+      "text": "AIシステムの動作がブラックボックスではなく、なぜそのような予測や決定に至ったのかを人間が理解できるようにすべきであるという原則はどれですか？",
+      "options": [
+        "透明性 (Transparency)",
+        "プライバシー (Privacy)",
+        "包括性 (Inclusiveness)",
+        "安全性 (Safety)"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】透明性 (Transparency)\nAIの動作原理や限界が理解可能であり、説明可能であることを求める原則です。"
+    },
+    {
+      "id": 28,
+      "text": "小売店内の防犯カメラ映像を分析し、レジ待ちの行列の人数をカウントしたり、顧客の動線を分析したりする機能は何と呼ばれますか？",
+      "options": [
+        "Spatial Analysis (空間分析)",
+        "Face Detection",
+        "Image Classification",
+        "Form Recognizer"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】Spatial Analysis (空間分析)\nComputer Visionの機能の一つで、空間内の人や物の動きをビデオ分析します。"
+    },
+    {
+      "id": 29,
+      "text": "自然言語処理において、入力されたテキストが「何語」であるか（例：Japanese, English, Spanish）を判定するタスクはどれですか？",
+      "options": [
+        "言語検出 (Language Detection)",
+        "キーフレーズ抽出",
+        "感情分析",
+        "翻訳"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】言語検出 (Language Detection)\nテキストの言語を識別し、言語コード（例：ja, en）を返します。"
+    },
+    {
+      "id": 30,
+      "text": "分類モデル（Classification）の性能を評価するために使用される、真陽性（TP）、偽陽性（FP）、真陰性（TN）、偽陰性（FN）の数を表形式でまとめたものは何ですか？",
+      "options": [
+        "混同行列 (Confusion Matrix)",
+        "散布図 (Scatter Plot)",
+        "箱ひげ図 (Box Plot)",
+        "ヒストグラム"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】混同行列 (Confusion Matrix)\n分類モデルの予測結果と実際の値を比較し、正解・不正解の内訳を可視化する行列です。"
+    },
+    {
+      "id": 31,
+      "text": "回帰モデル（数値予測）の評価指標として一般的に使用されるものはどれですか？",
+      "options": [
+        "決定係数 (R2 Score) や 平均二乗誤差 (RMSE)",
+        "正解率 (Accuracy)",
+        "適合率 (Precision)",
+        "再現率 (Recall)"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】決定係数 (R2 Score) や 平均二乗誤差 (RMSE)\n回帰モデルでは予測値と実測値の誤差（Error）を測定します。AccuracyやPrecisionは分類モデルの指標です。"
+    },
+    {
+      "id": 32,
+      "text": "コードを書かずに、グラフィカルなインターフェースで高度な会話フローを持つチャットボットを設計・構築できる開発ツールはどれですか？",
+      "options": [
+        "Microsoft Copilot Studio (旧 Power Virtual Agents) や Bot Framework Composer",
+        "Visual Studio Code",
+        "Azure CLI",
+        "Azure Storage Explorer"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】Microsoft Copilot Studio や Bot Framework Composer\nこれらはビジュアルキャンバスを使用してボットの対話フローを作成できるツールです。"
+    },
+    {
+      "id": 33,
+      "text": "Azure Machine Learningにおいて、モデルのトレーニングを実行するための計算リソース（例：CPU/GPUマシンのクラスター）を何と呼びますか？",
+      "options": [
+        "コンピューティング先 (Compute Target) / コンピューティングクラスター",
+        "データストア",
+        "データセット",
+        "エンドポイント"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】コンピューティング先 (Compute Target)\nトレーニングスクリプトを実行する場所（ローカル、クラウド上のVM、クラスターなど）を指します。"
+    },
+    {
+      "id": 34,
+      "text": "画像内の画素（ピクセル）ひとつひとつに対して、「道路」「車」「空」などのラベルを割り当て、画像の領域を厳密に分割するComputer Visionタスクはどれですか？",
+      "options": [
+        "セマンティックセグメンテーション",
+        "画像分類",
+        "物体検出",
+        "タグ付け"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】セマンティックセグメンテーション\n画像の各ピクセルをクラスに分類するため、物体の正確な境界線を特定できます。"
+    },
+    {
+      "id": 35,
+      "text": "ユーザーの行動履歴や好みに基づいて、最適なコンテンツ（記事、商品など）をリアルタイムで推奨（レコメンド）する強化学習ベースのサービスはどれですか？",
+      "options": [
+        "Azure AI Personalizer",
+        "Azure AI Recommender",
+        "Azure AI Selector",
+        "Azure AI Choice"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】Azure AI Personalizer\n強化学習を使用して、ユーザーに提示する最適な項目を学習・選択するサービスです。"
+    },
+    {
+      "id": 36,
+      "text": "ニュース記事の本文から、「重要なポイント」や「要約文」を自動的に生成する自然言語処理機能はどれですか？",
+      "options": [
+        "要約 (Summarization)",
+        "翻訳 (Translation)",
+        "感情分析 (Sentiment Analysis)",
+        "エンティティ認識 (NER)"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】要約 (Summarization)\n長いテキストから重要な情報を抽出し、短縮されたバージョンを作成します。"
+    },
+    {
+      "id": 37,
+      "text": "Azure AI Searchにおいて、画像ファイルやPDFなどの非構造化データからテキストや情報を抽出し、検索可能なインデックスに取り込む処理を行うコンポーネントは何ですか？",
+      "options": [
+        "インデクサー (Indexer) とスキルセット",
+        "クエリパーサー",
+        "スコアリングプロファイル",
+        "サジェスター"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】インデクサー (Indexer) とスキルセット\nインデクサーはデータソースをクロールし、スキルセット（AI処理）を適用してデータを検索インデックスに格納します。"
+    },
+    {
+      "id": 38,
+      "text": "責任あるAIの原則において、ユーザーの個人情報を保護し、データの不正アクセスを防ぐことを最優先する原則はどれですか？",
+      "options": [
+        "プライバシーとセキュリティ (Privacy and Security)",
+        "透明性 (Transparency)",
+        "公平性 (Fairness)",
+        "包括性 (Inclusiveness)"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】プライバシーとセキュリティ\nデータプライバシー法（GDPRなど）への準拠や、データの安全な管理を求めます。"
+    },
+    {
+      "id": 39,
+      "text": "Azure AI Video Indexerが提供する機能として正しいものはどれですか？",
+      "options": [
+        "動画内の顔認識、音声の書き起こし、感情分析、登場人物の識別などを自動的に行う",
+        "動画の編集やカット作業を自動化する",
+        "動画を圧縮してファイルサイズを小さくする",
+        "動画配信サーバーを提供する"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】動画内の顔認識...などを行う\nVideo Indexerは、動画ファイルからメタデータ（洞察）を抽出するAIサービスです。"
+    },
+    {
+      "id": 40,
+      "text": "GitHub Copilotのように、開発者とペアプログラミングを行い、自然言語のコメントからコードを提案・生成するAIモデルの種類はどれですか？",
+      "options": [
+        "生成AI (Generative AI) / 大規模言語モデル (LLM)",
+        "回帰モデル",
+        "クラスタリングモデル",
+        "異常検知モデル"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】生成AI (Generative AI)\nOpenAIのCodexモデルなどを利用して、コードを生成します。"
+    },
+    {
+      "id": 41,
+      "text": "Azure Machine Learningの「データラベル付け（Data Labeling）」プロジェクトは何のために使用されますか？",
+      "options": [
+        "教師あり学習のために、人間のラベラーが画像やテキストに対して正解（タグ）を付与するプロセスを管理するため",
+        "データベースの名前を変更するため",
+        "Azureの利用料金にタグを付けるため",
+        "リソースグループを整理するため"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】教師あり学習のために...管理するため\n大量のデータに正解ラベルを付ける作業を効率化・管理する機能です。"
+    },
+    {
+      "id": 42,
+      "text": "顔認証ゲートのように、カメラに映った人物が「特定の誰か（例：社員のAさん）」であるかを、登録済みデータベースと照合して特定するタスクはどれですか？",
+      "options": [
+        "顔識別 (Face Identification)",
+        "顔検出 (Face Detection)",
+        "感情認識 (Emotion Recognition)",
+        "年齢推定"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】顔識別 (Face Identification)\n1対多のマッチングを行い、その人物が誰であるかを特定します。顔検出は単に「顔があること」を見つけるだけです。"
+    },
+    {
+      "id": 43,
+      "text": "2つの顔画像（例：パスポートの写真と現在の自撮り写真）が同一人物のものであるかどうかを判定するタスクはどれですか？",
+      "options": [
+        "顔検証 (Face Verification)",
+        "顔識別 (Face Identification)",
+        "顔検出 (Face Detection)",
+        "顔グルーピング"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】顔検証 (Face Verification)\n1対1のマッチングを行い、同一人物かどうか（Yes/No）を判定します。"
+    },
+    {
+      "id": 44,
+      "text": "自動車の損害査定で、車の写真から「バンパー」「ドア」「ガラス」などの部品を検出し、それぞれの破損状況を分析する場合、最初に使用されるComputer Visionタスクとして最適なのはどれですか？",
+      "options": [
+        "物体検出 (Object Detection)",
+        "画像分類",
+        "OCR",
+        "顔検出"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】物体検出 (Object Detection)\n画像内の特定の部品（オブジェクト）の位置と種類を特定する必要があります。"
+    },
+    {
+      "id": 45,
+      "text": "Azure AI Servicesを使用する場合、開発者がインフラ（サーバーやOS）の管理をする必要がない理由は何ですか？",
+      "options": [
+        "PaaS (Platform as a Service) として提供されているため",
+        "IaaS (Infrastructure as a Service) だから",
+        "オンプレミスで動作するから",
+        "管理ツールがないから"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】PaaS として提供されているため\nAzure AI Servicesはマネージドサービスであり、インフラの管理はMicrosoftが行います。"
+    },
+    {
+      "id": 46,
+      "text": "Azure Machine Learningにおいて、モデルのトレーニングからデプロイまでのワークフローを自動化・管理し、再現性を確保するための手法（DevOpsの機械学習版）を何と呼びますか？",
+      "options": [
+        "MLOps (Machine Learning Operations)",
+        "DevSecOps",
+        "Agile",
+        "Scrum"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】MLOps\n機械学習プロジェクトにおけるCI/CD（継続的インテグレーション/デプロイメント）やモニタリングを実現する手法です。"
+    },
+    {
+      "id": 47,
+      "text": "入力されたテキストに対して、ポジティブ・ネガティブの判定だけでなく、「ピザはおいしかったが、サービスは遅かった」のように、対象ごとの感情（アスペクトベースの感情分析）を抽出できる機能はどれですか？",
+      "options": [
+        "Azure AI Language (Sentiment Analysis)",
+        "Translator",
+        "Speech Service",
+        "Vision Service"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】Azure AI Language (Sentiment Analysis)\n最新の感情分析機能（Opinion Mining）では、ターゲットごとの感情を抽出可能です。"
+    },
+    {
+      "id": 48,
+      "text": "ボットがユーザーの意図を理解した後、事前に定義されたシナリオに従うだけでなく、ナレッジベース（QnA）から回答を探して返すこともできるように、複数のAI機能を統合して管理できるサービスはどれですか？",
+      "options": [
+        "Azure AI Bot Service (with CLU & Question Answering)",
+        "Azure Functions",
+        "Azure Logic Apps",
+        "Azure VM"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】Azure AI Bot Service\nBot Serviceは、CLU（意図認識）やQuestion Answeringを組み合わせて、高度な会話ボットを構築できます。"
+    },
+    {
+      "id": 49,
+      "text": "「責任あるAI」の原則において、身体的、精神的、感覚的な特性に関わらず、すべての人が利用できるように製品を設計することを重視する原則はどれですか？",
+      "options": [
+        "包括性 (Inclusiveness)",
+        "公平性 (Fairness)",
+        "透明性 (Transparency)",
+        "プライバシー (Privacy)"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】包括性 (Inclusiveness)\nアクセシビリティを確保し、誰もがテクノロジーの恩恵を受けられるようにすることを目指します。"
+    },
+    {
+      "id": 50,
+      "text": "Azure AI Servicesのコンテナサポート（Containers）を使用する主なメリットは何ですか？",
+      "options": [
+        "クラウドにデータを送信せず、オンプレミスやエッジデバイス上でAIモデルを実行できる（データ主権・低遅延）",
+        "利用料金が無料になる",
+        "精度が自動的に向上する",
+        "インターネット接続が不要になる（完全にオフラインでセットアップ可能）"
+      ],
+      "correctAnswers": [
+        0
+      ],
+      "explanation": "【正解】オンプレミスやエッジデバイス上でAIモデルを実行できる\nDockerコンテナとしてAI機能（Sentiment AnalysisやOCRなど）をデプロイできるため、セキュリティ要件や低遅延要件に対応できます。ただし、課金のために定期的な接続が必要な場合があります。"
     }
   ]
 }
